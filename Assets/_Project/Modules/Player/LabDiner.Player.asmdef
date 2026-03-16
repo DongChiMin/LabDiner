@@ -1,15 +1,15 @@
 {
-    "name": "LabDiner.Laboratory",
-    "rootNamespace": "LabDiner.Laboratory",
+    "name": "LabDiner.Player",
+    "rootNamespace": "LabDiner.Player",
     "references": [
-        "GUID:dc8c4b79b0dc7eb4395d971eb29c18a7"
+        "LabDiner.Shared"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],
-    "autoReferenced": false,
+    "autoReferenced": true,
     "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false

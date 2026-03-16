@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LabDiner.Shared
 {
-    [CreateAssetMenu(fileName = "Level Config", menuName = "Kitchen/Level Config")]
+    [CreateAssetMenu(fileName = "Level Config", menuName = "Game/Level Config")]
     public class LevelConfigSO : ScriptableObject
     {
         public int levelIndex;
@@ -14,6 +14,6 @@ namespace LabDiner.Shared
 
         [Header("Goals")]
         public List<FlavorTag> targetDemands;      // Khẩu vị khách ở level này (ví dụ: Spicy)
-        public float moneyToPass;           // Số tiền cần đạt để qua màn
+        public List<LevelMissionSO> missions;       // Danh sách nhiệm vụ cụ thể (ví dụ: "Phục vụ 5 món Spicy", "Phục vụ 3 món Sweet", v.v.)
     }
 }

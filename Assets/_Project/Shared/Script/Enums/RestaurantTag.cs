@@ -9,4 +9,6 @@ namespace LabDiner.Shared
         Spicy = 4,   // Cay
         Savory = 5   // Đậm đà (Umami)
     }
+
+    public enum MissionType { Sell, UpgradeLevel, UnlockNew }
 }
