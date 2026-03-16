@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using LabDiner.Shared;
 using UnityEngine;
 
 public class SceneObjectPooling : MonoBehaviour
@@ -19,12 +20,12 @@ public class SceneObjectPooling : MonoBehaviour
     private IEnumerator SetupPoolGradually()
     {
         int createdCount = 0;
-        
+
         while (createdCount < initialSize)
         {
             // Tính toán số lượng cần tạo trong frame này
             int batchSize = Mathf.Min(objectsPerFrame, initialSize - createdCount);
-            
+
             for (int i = 0; i < batchSize; i++)
             {
                 CreateNewObject();
@@ -32,13 +33,22 @@ public class SceneObjectPooling : MonoBehaviour
             }
 
             // Đợi đến frame tiếp theo mới tạo tiếp
-            yield return null; 
+            yield return null;
         }
     }
 
     private GameObject CreateNewObject()
     {
         GameObject obj = Instantiate(prefab, transform);
+
+        if (!obj.TryGetComponent<PoolMember>(out PoolMember poolMember))
+        {
+            // Nếu không có thì add thêm và log ra console
+            poolMember = obj.AddComponent<PoolMember>();
+            Debug.Log($"<color=yellow>[PoolManager]</color> Đã thêm PoolMember vào {obj.name} vì prefab đang thiếu!");
+        }
+        poolMember.SetOrigin(this);
+
         obj.SetActive(false);
         poolQueue.Enqueue(obj);
         return obj;

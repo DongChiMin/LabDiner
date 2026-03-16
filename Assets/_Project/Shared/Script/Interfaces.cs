@@ -2,6 +2,10 @@ using UnityEngine;
 
 namespace LabDiner.Shared
 {
+    public interface IPoolable
+    {
+        void ReturnToPool();
+    }
     public interface IClickable
     {
         void OnPointerUp(Vector3 worldPosition);

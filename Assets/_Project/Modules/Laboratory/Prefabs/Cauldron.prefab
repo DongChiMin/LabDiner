@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1684842077956262050}
   - component: {fileID: 8564517778415854037}
-  - component: {fileID: 8615809060742313273}
   - component: {fileID: 1902985661821168113}
+  - component: {fileID: 8615809060742313273}
   m_Layer: 0
   m_Name: Cauldron
   m_TagString: Untagged
@@ -82,18 +82,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 6, y: 2}
   m_EdgeRadius: 0
---- !u!114 &8615809060742313273
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 739001156911750609}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb8bf39ee0827304f842a28c0a8efe53, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &1902985661821168113
 Rigidbody2D:
   serializedVersion: 5
@@ -121,6 +109,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &8615809060742313273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 739001156911750609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb8bf39ee0827304f842a28c0a8efe53, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onIngredientDroppedIn: {fileID: 11400000, guid: b8f46624110bb544c9934e53538c1466, type: 2}
 --- !u!1 &3437563368475157881
 GameObject:
   m_ObjectHideFlags: 0

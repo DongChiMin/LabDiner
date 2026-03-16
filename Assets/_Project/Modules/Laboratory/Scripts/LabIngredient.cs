@@ -17,6 +17,7 @@ namespace LabDiner.Laboratory
 
         public Transform Transform => transform;
         public IngredientSO IngredientData => data;
+        public Rigidbody2D Rigidbody => _rb;
         public object GetData() => data;
 
         private void Awake()
