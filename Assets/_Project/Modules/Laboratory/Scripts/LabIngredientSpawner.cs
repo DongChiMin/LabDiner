@@ -17,10 +17,8 @@ namespace LabDiner.Laboratory
 
         public IDraggable OnPointerDown(Vector3 worldPosition)
         {
-            if (_isDisableWhenClick)
-            {
-                ToggleSpawner(false);
-            }
+            RequestToggleSpawner(false);
+
 
             // 1. Spawn item từ pool
             var go = PoolManager.Instance.IngredientPool.Get(worldPosition + Vector3.down * 0.5f, Quaternion.identity);
@@ -28,7 +26,7 @@ namespace LabDiner.Laboratory
 
             //2. Set dữ liệu cho item mới spawn
             labIngredientContext.Init(this, _ingredientData);
-            
+
 
             // 3. Lấy component Draggable từ item mới
             if (go.TryGetComponent(out IDraggable newDraggable))
@@ -39,14 +37,17 @@ namespace LabDiner.Laboratory
             return null;
         }
 
-        public void ToggleSpawner(bool isEnabled)
+        public void RequestToggleSpawner(bool isEnabled)
         {
-            Debug.Log("TODO: làm hiệu ứng xuất hiện + biến mất cho spawner");
-            if (_collider != null)
-                _collider.enabled = isEnabled;
+            if (_isDisableWhenClick)
+            {
+                Debug.Log("TODO: làm hiệu ứng xuất hiện + biến mất cho spawner");
+                if (_collider != null)
+                    _collider.enabled = isEnabled;
 
-            if (_visual != null)
-                _visual.SetActive(isEnabled);
+                if (_visual != null)
+                    _visual.SetActive(isEnabled);
+            }
         }
     }
 }

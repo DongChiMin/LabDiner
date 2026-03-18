@@ -1,6 +1,8 @@
+using System.Collections.Generic;
 using LabDiner.Shared;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
 namespace LabDiner.Player
 {
@@ -44,9 +46,9 @@ namespace LabDiner.Player
         private void HandleInputStarted(Vector2 screenPos)
         {
             // 1. CHẶN CLICK XUYÊN UI
-            // Nếu chuột đang đè lên một phần tử UI (Canvas), không xử lý logic game bên dưới
-            if (EventSystem.current != null && EventSystem.current.IsPointerOverGameObject())
+            if (IsPointerOverUI(screenPos))
             {
+                // Nếu đè lên UI thì thoát, không xử lý logic game (như gắp nguyên liệu)
                 return;
             }
 
@@ -108,6 +110,22 @@ namespace LabDiner.Player
             _currentDragging = null;
             _currentClicking = null;
             _isDraggingActive = false;
+        }
+
+        private bool IsPointerOverUI(Vector2 screenPosition)
+        {
+            // Tạo một sự kiện pointer giả lập tại vị trí click
+            PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
+            eventDataCurrentPosition.position = screenPosition;
+
+            // Danh sách chứa các kết quả va chạm với UI
+            List<RaycastResult> results = new List<RaycastResult>();
+
+            // Yêu cầu EventSystem thực hiện Raycast ngay lập tức tại vị trí đó
+            EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
+
+            // Nếu danh sách kết quả > 0, nghĩa là chuột đang đè lên UI
+            return results.Count > 0;
         }
     }
 }

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using LabDiner.Shared;
 using LabDiner.Shared.Events;
 using UnityEngine;
+using TMPro;
 
 namespace LabDiner.Laboratory
 {
@@ -9,9 +10,9 @@ namespace LabDiner.Laboratory
     {
         [Header("Broadcasting Events")]
         [SerializeField] private IngredientEvent onIngredientDroppedIn;
-        [SerializeField] private GameObjectEvent onIngredientDroppedInGO;
+        [SerializeField] private TextMeshPro onRecipeTextUpdated;
 
-        private List<IngredientSO> currentIngredients = new List<IngredientSO>();
+        private HashSet<IngredientSO> currentIngredients = new HashSet<IngredientSO>();
 
         void OnEnable()
         {
@@ -25,7 +26,19 @@ namespace LabDiner.Laboratory
 
         private void HandleIngredientDroppedIn(IngredientSO ingredient)
         {
-            
+            currentIngredients.Add(ingredient);
+            UpdateRecipeText();
+        }
+
+        private void UpdateRecipeText()
+        {
+            // Implementation for updating the recipe text
+            string recipeText = "Current Recipe:\n";
+            foreach (var ingredient in currentIngredients)
+            {
+                recipeText += $"- {ingredient.name}\n";
+            }
+            onRecipeTextUpdated.text = recipeText;
         }
     }
 }

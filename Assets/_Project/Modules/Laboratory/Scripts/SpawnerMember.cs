@@ -12,7 +12,7 @@ namespace LabDiner.Laboratory
         {
         if (_originSpawner != null) 
         {
-            _originSpawner.ToggleSpawner(true);
+            _originSpawner.RequestToggleSpawner(true);
         }
     }
     }

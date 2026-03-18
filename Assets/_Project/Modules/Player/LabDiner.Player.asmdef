@@ -2,7 +2,8 @@
     "name": "LabDiner.Player",
     "rootNamespace": "LabDiner.Player",
     "references": [
-        "LabDiner.Shared"
+        "LabDiner.Shared",
+        "Unity.InputSystem"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
