@@ -10,7 +10,7 @@ namespace LabDiner.Restaurant
     [SerializeField] private float payDuration = 0f;
 
     public IEnumerator WaitForServe() {
-        Debug.Log("Đang chờ có bàn trống...");
+        Debug.Log("Đang chờ phục vụ...");
         // Ở đây có thể bật animation chờ đợi
         yield return null; // Chờ cho đến khi được gọi tiếp tục
     }
