@@ -11,6 +11,13 @@ namespace LabDiner.Restaurant
         [SerializeField] private float _serveDuration = 3f;
         [SerializeField] private float _giveFoodDuration = 0f;
 
+        private MultitaskChefContext _context;
+
+        void Start()
+        {
+            _context = GetComponent<MultitaskChefContext>();
+        }
+
         public IEnumerator Cook(CookingTask task)
         {
             CoreStation coreStation = task.CoreStation;
@@ -18,6 +25,8 @@ namespace LabDiner.Restaurant
             // Bật hiệu ứng khói, lửa, âm thanh xèo xèo...
             yield return new WaitForSeconds(3 * (1/ cookMultiplier));
             task.StationTarget.SetStatus(true);
+            _context.CtxLogic.UpdateCookingTaskPrice(task);
+            _context.CtxLogic.CarryDish(task);
         }
 
         public IEnumerator Serve(Order order)
@@ -34,6 +43,7 @@ namespace LabDiner.Restaurant
             guest.ReceiveFood(cookingTask);
             Debug.Log("TODO: show tiến trình phục vụ tại đây");
             yield return new WaitForSeconds(_giveFoodDuration);
+            _context.CtxLogic.FinishTask(cookingTask);
         }
     }
 }
