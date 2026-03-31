@@ -17,7 +17,12 @@ namespace LabDiner.Restaurant
         public StaffMover CtxMover => _mover;
         public ChefBehavior CtxBehavior => _behavior;
         public ChefAI CtxAI => _ai;
-        public bool IsAvailable { get ; set ; } = true;
+        [Header("[Debug]")]
+        [SerializeField] private bool _isAvailable = true;
+        public bool IsAvailable {
+            get => _isAvailable; 
+            set => _isAvailable = value;
+        }
 
         public void DoTask(IStaffTask task)
         {

@@ -12,13 +12,6 @@ namespace LabDiner.Restaurant
         [SerializeField] private float _serveDuration = 3f;
         [SerializeField] private float _giveFoodDuration = 0f;
 
-        private MultitaskChefContext _context;
-
-        void Start()
-        {
-            _context = GetComponent<MultitaskChefContext>();    
-        }
-
         public IEnumerator Cook(CookingTask task)
         {
             CoreStation coreStation = task.CoreStation;
@@ -26,14 +19,6 @@ namespace LabDiner.Restaurant
             // Bật hiệu ứng khói, lửa, âm thanh xèo xèo...
             yield return new WaitForSeconds(3 * (1/ cookMultiplier));
             task.StationTarget.SetStatus(true);
-        }
-
-        public IEnumerator PlaceOnPassTable(CookingTask task)
-        {
-            task.PassTableTarget.PlaceTaskOnPassTable(task);
-            _context.OnTaskCompleted(task);
-            // Di chuyển món ăn đến PassTable, bật hiệu ứng đặt món...
-            yield return new WaitForSeconds(placeOnPassTableDuration);
         }
 
         public IEnumerator Serve(Order order)

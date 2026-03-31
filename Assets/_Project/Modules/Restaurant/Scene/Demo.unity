@@ -2124,6 +2124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onNewTask: {fileID: 11400000, guid: cb1850507257ec648b7a29f637190c52, type: 2}
   _onStaffAvailable: {fileID: 11400000, guid: 4b65bf85517f71e42a3df099e2e32fae, type: 2}
+  _StaffAvailableEventPriority: 0
   _staffs:
   - {fileID: 1132748860}
   - {fileID: 716532841}
@@ -2273,6 +2274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onNewTask: {fileID: 11400000, guid: 7c5e3288b2179da4d90d0906782504de, type: 2}
   _onStaffAvailable: {fileID: 11400000, guid: 44bea33991e542f4abc297df2d13af2f, type: 2}
+  _StaffAvailableEventPriority: 1
   _staffs:
   - {fileID: 1862464809}
   - {fileID: 2059679775}
@@ -2529,6 +2531,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _onNewTask: {fileID: 11400000, guid: 822a13be6b45ee143ae554a175d9ab4e, type: 2}
   _onStaffAvailable: {fileID: 11400000, guid: 44bea33991e542f4abc297df2d13af2f, type: 2}
+  _StaffAvailableEventPriority: 0
   _staffs:
   - {fileID: 1862464809}
   - {fileID: 2059679775}

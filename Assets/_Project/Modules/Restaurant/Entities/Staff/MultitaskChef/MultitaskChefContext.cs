@@ -8,6 +8,8 @@ namespace LabDiner.Restaurant
         [Header("Settings")]
         [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
         [SerializeField] private OrderEvent _onOrderServed;
+        [SerializeField] private MultitaskChefEvent _onMultitaskChefAvailable;
+
         [SerializeField] private Transform _restPosition;
         public Transform RestPosition => _restPosition;
 
@@ -18,7 +20,12 @@ namespace LabDiner.Restaurant
         public StaffMover CtxMover => _mover;
         public MultitaskChefBehavior CtxBehavior => _behavior;
         public MultitaskChefAI CtxAI => _ai;
-        public bool IsAvailable { get ; set ; } = true;
+        [Header("[Debug]")]
+        [SerializeField] private bool _isAvailable = true;
+        public bool IsAvailable {
+            get => _isAvailable; 
+            set => _isAvailable = value;
+        }
 
         public void DoTask(IStaffTask task)
         {
@@ -41,6 +48,7 @@ namespace LabDiner.Restaurant
         public void OnTaskCompleted(IStaffTask task)
         {
             IsAvailable = true;
+            _onMultitaskChefAvailable.Raise(this);
             switch(task)
             {
                 case CookingTask cookingTask:

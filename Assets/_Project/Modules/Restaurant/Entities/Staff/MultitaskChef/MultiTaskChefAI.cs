@@ -6,11 +6,6 @@ namespace LabDiner.Restaurant
 {
     public class MultitaskChefAI : MonoBehaviour
     {
-        [Header("Event")]
-        [SerializeField] private MultitaskChefEvent _onMultitaskChefAvailable;
-        [Header("[DEBUG]")]
-        [SerializeField] private CookingTask currentTask;
-
         private StaffMover _mover;
         private MultitaskChefBehavior _behavior;
         private MultitaskChefContext _context;
@@ -26,10 +21,7 @@ namespace LabDiner.Restaurant
 
         private IEnumerator DoCookAndShip(CookingTask task)
         {
-            currentTask = task;
             Station station = task.StationTarget;
-            PassTable passTable = task.PassTableTarget;
-
 
             //1. Di chuyển đến vị trí của Station
             yield return _mover.MoveTo(station.WorkPos.position);
@@ -44,7 +36,7 @@ namespace LabDiner.Restaurant
             yield return _context.CtxBehavior.GiveFoodToGuest(task);
 
             //5. Quay về vị trí nghỉ ngơi hoặc làm task khác nếu có
-            yield return Rest();
+            yield return Rest(task);
         }
 
         IEnumerator DoServe(Order order)
@@ -74,18 +66,10 @@ namespace LabDiner.Restaurant
             StartCoroutine(DoServe(order));
         }
 
-        IEnumerator Rest()
-        {
-            currentTask = null;
-            _onMultitaskChefAvailable.Raise(_context);
-            yield return _mover.MoveTo(_context.RestPosition.position);
-        }
-
         IEnumerator Rest(IStaffTask completedTask)
         {
-            _context.OnTaskCompleted(completedTask);
             servingOrder = null;
-            _onMultitaskChefAvailable.Raise(_context);
+            _context.OnTaskCompleted(completedTask);
             yield return _context.CtxMover.MoveTo(_context.RestPosition.position);
         }
 

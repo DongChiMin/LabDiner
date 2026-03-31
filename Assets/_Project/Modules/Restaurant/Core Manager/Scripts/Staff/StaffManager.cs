@@ -21,6 +21,8 @@ namespace LabDiner.Restaurant
         [Header("Settings")]
         [SerializeField] private GameEvent<TTask> _onNewTask;
         [SerializeField] private GameEvent<TStaff> _onStaffAvailable;
+        [Tooltip("Độ ưu tiên của event khi nhân viên sẵn sàng (dùng cho trường hợp nhân viên được quản lý bởi nhiều manager). Số càng lớn thì độ ưu tiên càng cao (được gọi trước khi Raise event).")]
+        [SerializeField] private int _StaffAvailableEventPriority = 0;
         [SerializeField] List<TStaff> _staffs = new();
         [SerializeField] Queue<TTask> _taskQueue = new();
 
@@ -34,7 +36,7 @@ namespace LabDiner.Restaurant
         void OnEnable()
         {
             _onNewTask.Register(HandleNewTask);
-            _onStaffAvailable.Register(HandleStaffAvailable);
+            _onStaffAvailable.Register(HandleStaffAvailable, _StaffAvailableEventPriority);
             _onStationAvailable?.Register(HandleStationAvailable);
         }
 
@@ -85,7 +87,8 @@ namespace LabDiner.Restaurant
 
         protected void HandleStaffAvailable(TStaff staff)
         {
-            if (_taskQueue.Count > 0)
+            Debug.Log("Được gọi từ manager " + this + " khi nhân viên " + staff + " sẵn sàng." + staff.IsAvailable);
+            if (_taskQueue.Count > 0 && staff.IsAvailable)
             {
                 TTask nextTask = _taskQueue.Peek();
                 if (!CanAssignTask(nextTask)) return;
@@ -98,7 +101,7 @@ namespace LabDiner.Restaurant
             else
             {
                 // _availableStaffs.Enqueue(staff);
-                Debug.Log("Không có đơn hàng nào đang chờ, nhân viên " + staff + " đã sẵn sàng.");
+                Debug.Log("Không có đơn hàng nào đang chờ, hoặc nhân viên đã bận");
             }
             SyncDebugView();
         }
