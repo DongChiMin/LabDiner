@@ -2123,7 +2123,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _onNewTask: {fileID: 11400000, guid: cb1850507257ec648b7a29f637190c52, type: 2}
-  _onStaffAvailable: {fileID: 11400000, guid: 6ddc07504475e06439e739d1610bac34, type: 2}
+  _onStaffAvailable: {fileID: 11400000, guid: 4b65bf85517f71e42a3df099e2e32fae, type: 2}
   _staffs:
   - {fileID: 1132748860}
   - {fileID: 716532841}
