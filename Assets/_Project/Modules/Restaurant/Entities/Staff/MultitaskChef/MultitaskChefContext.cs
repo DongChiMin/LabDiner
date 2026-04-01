@@ -4,30 +4,36 @@ using UnityEngine.AI;
 namespace LabDiner.Restaurant
 {
     public class MultitaskChefContext : MonoBehaviour, IStaff
-    { 
-        [Header("Settings")]
-        [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
-        [SerializeField] private OrderEvent _onOrderServed;
-        [SerializeField] private MultitaskChefEvent _onMultitaskChefAvailable;
-
-        [SerializeField] private Transform _restPosition;
-        public Transform RestPosition => _restPosition;
-
-        [Header("Components")]
-        [SerializeField] private StaffMover _mover;
-        [SerializeField] private MultitaskChefBehavior _behavior;
-        [SerializeField] private MultitaskChefAI _ai;
-        [SerializeField] private MultitaskChefLogic _logic;
+    {         
         public StaffMover CtxMover => _mover;
         public MultitaskChefBehavior CtxBehavior => _behavior;
         public MultitaskChefAI CtxAI => _ai;
-        public MultitaskChefLogic CtxLogic => _logic;
-        [Header("[Debug]")]
-        [SerializeField] private bool _isAvailable = true;
+        public StaffCarryDish CarryDishLogic => _carryDishLogic;
+        public StaffProgressPie ProgressPieLogic => _progressPieLogic;
         public bool IsAvailable {
             get => _isAvailable; 
             set => _isAvailable = value;
         }
+        public Transform RestPosition => _restPosition;
+
+        [Header("Settings")]
+        [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
+        [SerializeField] private OrderEvent _onOrderServed;
+        [SerializeField] private MultitaskChefEvent _onMultitaskChefAvailable;
+        [SerializeField] private Transform _restPosition;
+        
+        [Header("Components")]
+        [SerializeField] private StaffMover _mover;
+        [SerializeField] private MultitaskChefBehavior _behavior;
+        [SerializeField] private MultitaskChefAI _ai;
+
+        [Header("Visual Logics")]
+        [SerializeField] private StaffCarryDish _carryDishLogic;
+        [SerializeField] private StaffProgressPie _progressPieLogic;
+
+        [Header("[Debug]")]
+        [SerializeField] private bool _isAvailable = true;
+        
 
         public void DoTask(IStaffTask task)
         {

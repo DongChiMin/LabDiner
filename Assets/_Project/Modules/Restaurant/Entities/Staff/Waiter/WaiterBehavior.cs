@@ -23,7 +23,7 @@ namespace LabDiner.Restaurant
         public IEnumerator Serve(Order order)
         {
             GuestContext guest = order.OrderBy;
-
+            _ctx.ProgressPieLogic.StartProgressPie(_serveDuration);
             yield return new WaitForSeconds(_serveDuration);
             guest.SetServedStatus(true);
         }
@@ -33,8 +33,9 @@ namespace LabDiner.Restaurant
             Debug.Log("TODO: show tiến trình pick up tại đây");
             PassTable passTable = cookingTask.PassTableTarget;
             passTable.PickUpDish(cookingTask);
+            _ctx.ProgressPieLogic.StartProgressPie(_pickUpDuration);
             yield return new WaitForSeconds(_pickUpDuration); // Giả lập thời gian lấy món
-            _ctx.CtxLogic.CarryDish(cookingTask);
+            _ctx.CarryDishLogic.CarryDish(cookingTask);
         }
 
         public IEnumerator GiveFoodToGuest(CookingTask cookingTask)
@@ -42,8 +43,9 @@ namespace LabDiner.Restaurant
             GuestContext guest = cookingTask.Order.OrderBy;
             guest.ReceiveFood(cookingTask);
             Debug.Log("TODO: show tiến trình phục vụ tại đây");
+            _ctx.ProgressPieLogic.StartProgressPie(_giveFoodDuration);
             yield return new WaitForSeconds(_giveFoodDuration);
-            _ctx.CtxLogic.FinishTask(cookingTask);
+            _ctx.CarryDishLogic.Finish(cookingTask);
         }
     }
 }

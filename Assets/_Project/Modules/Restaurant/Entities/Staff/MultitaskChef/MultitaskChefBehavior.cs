@@ -22,17 +22,19 @@ namespace LabDiner.Restaurant
         {
             CoreStation coreStation = task.CoreStation;
             Debug.Log("TODO: hoàn thiện công thức thời gian nấu");
-            // Bật hiệu ứng khói, lửa, âm thanh xèo xèo...
-            yield return new WaitForSeconds(3 * (1/ cookMultiplier));
+            float cookTime = 3 * (1/ cookMultiplier);
+            _context.ProgressPieLogic.StartProgressPie(cookTime);
+            yield return new WaitForSeconds(cookTime);
             task.StationTarget.SetStatus(true);
-            _context.CtxLogic.UpdateCookingTaskPrice(task);
-            _context.CtxLogic.CarryDish(task);
+            _context.CarryDishLogic.UpdateCookingTaskPrice(task);
+            _context.CarryDishLogic.CarryDish(task);
         }
 
         public IEnumerator Serve(Order order)
         {
             GuestContext guest = order.OrderBy;
 
+            _context.ProgressPieLogic.StartProgressPie(_serveDuration);
             yield return new WaitForSeconds(_serveDuration);
             guest.SetServedStatus(true);
         }
@@ -43,7 +45,7 @@ namespace LabDiner.Restaurant
             guest.ReceiveFood(cookingTask);
             Debug.Log("TODO: show tiến trình phục vụ tại đây");
             yield return new WaitForSeconds(_giveFoodDuration);
-            _context.CtxLogic.FinishTask(cookingTask);
+            _context.CarryDishLogic.Finish(cookingTask);
         }
     }
 }

@@ -1436,6 +1436,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiningTable (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 4866547160653113531, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1591,6 +1595,10 @@ PrefabInstance:
     - target: {fileID: 3906446568473829134, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
       propertyPath: m_Name
       value: DiningTable (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866547160653113531, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1865,6 +1873,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DiningTable (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 4866547160653113531, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.65
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2023,6 +2035,10 @@ PrefabInstance:
     - target: {fileID: 3906446568473829134, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
       propertyPath: m_Name
       value: DiningTable
+      objectReference: {fileID: 0}
+    - target: {fileID: 4866547160653113531, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.65
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

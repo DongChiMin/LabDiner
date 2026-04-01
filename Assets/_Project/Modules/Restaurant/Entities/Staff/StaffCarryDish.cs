@@ -1,11 +1,9 @@
-
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace LabDiner.Restaurant
 {
-    public class ChefLogic : MonoBehaviour
+    public class StaffCarryDish : MonoBehaviour
     {
         [SerializeField] private GameObject _carryDishObject;
         [SerializeField] private TextMeshProUGUI _priceText;
@@ -32,11 +30,11 @@ namespace LabDiner.Restaurant
         {
             _dishIcon.sprite = task.CoreStation.DishIcon;
             currentPrice = task.Price;
-            
+
             ToggleCarryDish(true);
         }
 
-        public void FinishTask(CookingTask task)
+        public void Finish(CookingTask task)
         {
             ToggleCarryDish(false);
         }
@@ -48,5 +46,5 @@ namespace LabDiner.Restaurant
             _carryDishObject.SetActive(isOn);
             _priceText.text = currentPrice.ToString();
         }
-    } 
+    }
 }

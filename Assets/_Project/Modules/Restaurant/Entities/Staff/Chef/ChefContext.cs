@@ -5,6 +5,12 @@ namespace LabDiner.Restaurant
 {
     public class ChefContext : MonoBehaviour, IStaff
     { 
+        public StaffMover CtxMover => _mover;
+        public ChefBehavior CtxBehavior => _behavior;
+        public ChefAI CtxAI => _ai;
+        public StaffCarryDish CarryDishLogic => _carryDishLogic;
+        public StaffProgressPie ProgressPieLogic => _progressPieLogic;
+
         [Header("Settings")]
         [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
         [SerializeField] private ChefEvent _onChefAvailable;
@@ -15,12 +21,11 @@ namespace LabDiner.Restaurant
         [SerializeField] private StaffMover _mover;
         [SerializeField] private ChefBehavior _behavior;
         [SerializeField] private ChefAI _ai;
-        [SerializeField] private ChefLogic _logic;
-        public StaffMover CtxMover => _mover;
-        public ChefBehavior CtxBehavior => _behavior;
-        public ChefAI CtxAI => _ai;
-        public ChefLogic CtxLogic => _logic;
-        
+
+        [Header("Visual Logics")]
+        [SerializeField] private StaffCarryDish _carryDishLogic;
+        [SerializeField] private StaffProgressPie _progressPieLogic;
+
         [Header("[Debug]")]
         [SerializeField] private bool _isAvailable = true;
         public bool IsAvailable {

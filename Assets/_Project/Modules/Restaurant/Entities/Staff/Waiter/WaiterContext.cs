@@ -8,7 +8,13 @@ namespace LabDiner.Restaurant
         public StaffMover CtxMover => _mover;
         public WaiterBehavior CtxBehavior => _behavior;
         public WaiterAI CtxAI => _ai;
-        public WaiterLogic CtxLogic => _logic;
+        public StaffCarryDish CarryDishLogic => _carryDishLogic;
+        public StaffProgressPie ProgressPieLogic => _progressPieLogic;
+        public bool IsAvailable {
+            get => _isAvailable; 
+            set => _isAvailable = value;
+        }
+
 
         [Header("Settings")]
         [SerializeField] private OrderEvent _onOrderServed;
@@ -20,14 +26,13 @@ namespace LabDiner.Restaurant
         [SerializeField] private StaffMover _mover;
         [SerializeField] private WaiterBehavior _behavior;
         [SerializeField] private WaiterAI _ai;
-        [SerializeField] private WaiterLogic _logic;
+        
+        [Header("Visual Logics")]
+        [SerializeField] private StaffCarryDish _carryDishLogic;
+        [SerializeField] private StaffProgressPie _progressPieLogic;
 
         [Header("[Debug]")]
         [SerializeField] private bool _isAvailable = true;
-        public bool IsAvailable {
-            get => _isAvailable; 
-            set => _isAvailable = value;
-        }
 
         public void DoTask(IStaffTask task)
         {

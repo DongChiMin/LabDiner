@@ -19,19 +19,21 @@ namespace LabDiner.Restaurant
         public IEnumerator Cook(CookingTask task)
         {
             Debug.Log("TODO: hoàn thiện công thức thời gian nấu");
-            // Bật hiệu ứng khói, lửa, âm thanh xèo xèo...
-            yield return new WaitForSeconds(3 * (1/ cookMultiplier));
+            float cookTime = 3 * (1/ cookMultiplier);
+            _context.ProgressPieLogic.StartProgressPie(cookTime);
+            yield return new WaitForSeconds(cookTime);
             task.StationTarget.SetStatus(true);
-            _context.CtxLogic.UpdateCookingTaskPrice(task);
-            _context.CtxLogic.CarryDish(task);
+            _context.CarryDishLogic.UpdateCookingTaskPrice(task);
+            _context.CarryDishLogic.CarryDish(task);
         }
 
         public IEnumerator PlaceOnPassTable(CookingTask task)
         {
             task.PassTableTarget.PlaceTaskOnPassTable(task);
             // Di chuyển món ăn đến PassTable, bật hiệu ứng đặt món...
+            _context.ProgressPieLogic.StartProgressPie(placeOnPassTableDuration);
             yield return new WaitForSeconds(placeOnPassTableDuration);
-            _context.CtxLogic.FinishTask(task);
+            _context.CarryDishLogic.Finish(task);
         }
     }
 }
