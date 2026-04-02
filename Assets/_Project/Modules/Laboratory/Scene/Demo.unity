@@ -211,6 +211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f36cfd238a62e17409cf36dcc6c32af7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
   _ingredientPool: {fileID: 1607729861}
 --- !u!1 &576015340
 GameObject:
@@ -735,10 +736,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1607729859}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 668c6a5542406d64eafe78cd2ef98152, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fea341c76756cd48a2a4b1bf5c9069b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 8015811790385571305, guid: b70138e907d336542ad01484660f9aca, type: 3}
+  prefab: {fileID: 1167618124431651250, guid: b70138e907d336542ad01484660f9aca, type: 3}
   initialSize: 10
   objectsPerFrame: 1
 --- !u!4 &1626675790 stripped
@@ -775,6 +776,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1b8038623bdf5a42a5bfc94e3263c16, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dontDestroyOnLoad: 0
 --- !u!4 &1928066592
 Transform:
   m_ObjectHideFlags: 0
