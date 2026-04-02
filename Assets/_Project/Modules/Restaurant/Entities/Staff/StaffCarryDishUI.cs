@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant
 {
-    public class StaffCarryDish : MonoBehaviour
+    public class StaffCarryDishUI : MonoBehaviour
     {
         [SerializeField] private GameObject _carryDishObject;
         [SerializeField] private TextMeshProUGUI _priceText;

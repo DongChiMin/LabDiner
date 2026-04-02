@@ -19,7 +19,7 @@ namespace LabDiner.Restaurant
         [SerializeField] private GuestEvent _onGuestWaitInLine;
 
         [Header("Patience Settings")]
-        [SerializeField] private PatiencePie _patienceUI; // Reference tới script mới
+        [SerializeField] private PatiencePieUI _patienceUI; // Reference tới script mới
         [SerializeField] private float _maxPatienceTime = 30f;
 
         [Header("[DEBUG]")]

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant
 {
-    public class GuestOrderCanvas : MonoBehaviour
+    public class GuestOrderUI : MonoBehaviour
     {
         [Header("UI")]
         [SerializeField] private TextMeshProUGUI _debugOrderText;

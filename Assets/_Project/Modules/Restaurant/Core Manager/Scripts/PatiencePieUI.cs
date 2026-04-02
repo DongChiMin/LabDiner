@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace LabDiner.Restaurant
 {
-    public class PatiencePie : MonoBehaviour
+    public class PatiencePieUI : MonoBehaviour
     {
         [SerializeField] private Image _fillImage;
         [SerializeField] private Color _highColor = Color.green;

@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 namespace LabDiner.Restaurant
 {
-    public class StaffProgressPie : MonoBehaviour
+    public class StaffProgressPieUI : MonoBehaviour
     {
         [SerializeField] private GameObject _parentVisual;
         [SerializeField] private Image _progressPie;
