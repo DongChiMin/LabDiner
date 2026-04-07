@@ -2,11 +2,14 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
+using System;
 
 namespace LabDiner.Shared.Input
 {
     public class InputReader : MonoBehaviour
     {
+        public static Action<Vector2> OnGlobalClick;
+
         [Header("Settings")]
         [SerializeField] private LayerMask _interactableLayer; // Gán Layer "Interactable" trong Inspector
         [SerializeField] private float _maxRayDistance = 100f;
@@ -50,6 +53,9 @@ namespace LabDiner.Shared.Input
 
             // 2. Lấy PointerId (DeviceId) từ thiết bị vừa thực hiện action
             int deviceId = context.control.device.deviceId;
+
+            // 2.3 PHÁT TIN: Báo cho các UI biết có cú click vừa xảy ra
+            OnGlobalClick?.Invoke(screenPos);
 
             // 3. Chặn nếu bấm trúng UI
             if (IsPointerOverUI(deviceId, screenPos)) return;
