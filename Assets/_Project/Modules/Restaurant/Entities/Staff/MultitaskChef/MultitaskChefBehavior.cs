@@ -23,18 +23,18 @@ namespace LabDiner.Restaurant
             CoreStation coreStation = task.CoreStation;
             Debug.Log("TODO: hoàn thiện công thức thời gian nấu");
             float cookTime = 3 * (1/ cookMultiplier);
-            _context.ProgressPieLogic.StartProgressPie(cookTime);
+            _context.ProgressPieUI.StartProgressPie(cookTime);
             yield return new WaitForSeconds(cookTime);
             task.StationTarget.SetStatus(true);
-            _context.CarryDishLogic.UpdateCookingTaskPrice(task);
-            _context.CarryDishLogic.CarryDish(task);
+            _context.CarryDishUI.UpdateCookingTaskPrice(task);
+            _context.CarryDishUI.CarryDish(task);
         }
 
         public IEnumerator Serve(Order order)
         {
             GuestContext guest = order.OrderBy;
 
-            _context.ProgressPieLogic.StartProgressPie(_serveDuration);
+            _context.ProgressPieUI.StartProgressPie(_serveDuration);
             yield return new WaitForSeconds(_serveDuration);
             guest.SetServedStatus(true);
         }
@@ -45,7 +45,7 @@ namespace LabDiner.Restaurant
             guest.ReceiveFood(cookingTask);
             Debug.Log("TODO: show tiến trình phục vụ tại đây");
             yield return new WaitForSeconds(_giveFoodDuration);
-            _context.CarryDishLogic.Finish(cookingTask);
+            _context.CarryDishUI.Finish(cookingTask);
         }
     }
 }

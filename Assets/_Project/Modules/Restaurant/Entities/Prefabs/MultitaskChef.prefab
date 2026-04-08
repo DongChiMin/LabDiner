@@ -76,12 +76,13 @@ MonoBehaviour:
   _onCookingTaskComplete: {fileID: 11400000, guid: 822a13be6b45ee143ae554a175d9ab4e, type: 2}
   _onOrderServed: {fileID: 11400000, guid: c714de0f369beda40919630f2d7f8cef, type: 2}
   _onMultitaskChefAvailable: {fileID: 11400000, guid: b436baff3d0715e43857da8ec968332e, type: 2}
+  _onCoinAdded: {fileID: 11400000, guid: 762700b435a5f8341a777a47398735eb, type: 2}
   _restPosition: {fileID: 0}
   _mover: {fileID: 858930917652729055}
   _behavior: {fileID: 4122985038580860585}
   _ai: {fileID: 7373646961011593195}
-  _carryDishLogic: {fileID: 7958295412263842507}
-  _progressPieLogic: {fileID: 8794036742702110570}
+  _carryDishUI: {fileID: 7958295412263842507}
+  _progressPieUI: {fileID: 8794036742702110570}
   _isAvailable: 1
 --- !u!114 &7373646961011593195
 MonoBehaviour:

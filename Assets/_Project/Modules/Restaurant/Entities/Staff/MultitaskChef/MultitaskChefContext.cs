@@ -8,8 +8,8 @@ namespace LabDiner.Restaurant
         public StaffMover CtxMover => _mover;
         public MultitaskChefBehavior CtxBehavior => _behavior;
         public MultitaskChefAI CtxAI => _ai;
-        public StaffCarryDishUI CarryDishLogic => _carryDishLogic;
-        public StaffProgressPieUI ProgressPieLogic => _progressPieLogic;
+        public StaffCarryDishUI CarryDishUI => _carryDishUI;
+        public StaffProgressPieUI ProgressPieUI => _progressPieUI;
         public bool IsAvailable {
             get => _isAvailable; 
             set => _isAvailable = value;
@@ -20,6 +20,7 @@ namespace LabDiner.Restaurant
         [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
         [SerializeField] private OrderEvent _onOrderServed;
         [SerializeField] private MultitaskChefEvent _onMultitaskChefAvailable;
+        [SerializeField] private LevelCoinEvent _onCoinAdded;
         [SerializeField] private Transform _restPosition;
         
         [Header("Components")]
@@ -28,8 +29,8 @@ namespace LabDiner.Restaurant
         [SerializeField] private MultitaskChefAI _ai;
 
         [Header("Visual Logics")]
-        [SerializeField] private StaffCarryDishUI _carryDishLogic;
-        [SerializeField] private StaffProgressPieUI _progressPieLogic;
+        [SerializeField] private StaffCarryDishUI _carryDishUI;
+        [SerializeField] private StaffProgressPieUI _progressPieUI;
 
         [Header("[Debug]")]
         [SerializeField] private bool _isAvailable = true;
@@ -64,6 +65,7 @@ namespace LabDiner.Restaurant
                     break;
                 case Order order:
                     _onOrderServed.Raise(order);
+                    _onCoinAdded.Raise(order.Profit);
                     break;
                 default:
                     Debug.LogError("Unsupported task type for MultitaskChef: " + task.GetType());
