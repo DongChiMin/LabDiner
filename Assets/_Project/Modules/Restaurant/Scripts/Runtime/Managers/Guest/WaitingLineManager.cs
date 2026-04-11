@@ -137,12 +137,15 @@ namespace LabDiner.Restaurant
         {
             if (_waitingGuests.Count == 0) return;
 
+            StopPatience();
+
             GuestContext angryGuest = _waitingGuests[0];
             _waitingGuests.RemoveAt(0);
+
             RearrangeQueue();
+
             angryGuest.LeaveAngry(); 
 
-            StopPatience();
             if (_waitingGuests.Count > 0) StartPatience();
         }
 

@@ -58,6 +58,7 @@ namespace LabDiner.Restaurant
              {
                 _onCoinSpent.Raise(_upgradeCost);
                 upgradeSO.ApplyUpgrade();
+                gameObject.SetActive(false);
              });
         }
 

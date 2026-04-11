@@ -10,12 +10,19 @@ namespace LabDiner.Restaurant
         public ChefAI CtxAI => _ai;
         public StaffCarryDishUI CarryDishUI => _carryDishUI;
         public StaffProgressPieUI ProgressPieUI => _progressPieUI;
+        public bool IsAvailable {
+            get => _isAvailable; 
+            set => _isAvailable = value;
+        }
+        public Transform RestPosition
+        {
+            get => _currentRestPos;
+            set => _currentRestPos = value;
+        }
 
         [Header("Settings")]
         [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
         [SerializeField] private ChefEvent _onChefAvailable;
-        [SerializeField] private Transform _restPosition;
-        public Transform RestPosition => _restPosition;
 
         [Header("Components")]
         [SerializeField] private StaffMover _mover;
@@ -27,11 +34,8 @@ namespace LabDiner.Restaurant
         [SerializeField] private StaffProgressPieUI _progressPieUI;
 
         [Header("[Debug]")]
+        [SerializeField] private Transform _currentRestPos;
         [SerializeField] private bool _isAvailable = true;
-        public bool IsAvailable {
-            get => _isAvailable; 
-            set => _isAvailable = value;
-        }
 
         public void DoTask(IStaffTask task)
         {

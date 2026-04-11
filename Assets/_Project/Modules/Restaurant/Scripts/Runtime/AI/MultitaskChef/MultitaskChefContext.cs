@@ -14,14 +14,17 @@ namespace LabDiner.Restaurant
             get => _isAvailable; 
             set => _isAvailable = value;
         }
-        public Transform RestPosition => _restPosition;
+        public Transform RestPosition
+        {
+            get => _currentRestPos;
+            set => _currentRestPos = value;
+        }
 
         [Header("Settings")]
         [SerializeField] private CookingTaskEvent _onCookingTaskComplete;
         [SerializeField] private OrderEvent _onOrderServed;
         [SerializeField] private MultitaskChefEvent _onMultitaskChefAvailable;
         [SerializeField] private LevelCoinEvent _onCoinAdded;
-        [SerializeField] private Transform _restPosition;
         
         [Header("Components")]
         [SerializeField] private StaffMover _mover;
@@ -33,6 +36,7 @@ namespace LabDiner.Restaurant
         [SerializeField] private StaffProgressPieUI _progressPieUI;
 
         [Header("[Debug]")]
+        [SerializeField] private Transform _currentRestPos;
         [SerializeField] private bool _isAvailable = true;
         
 

@@ -6,9 +6,11 @@ namespace LabDiner.Restaurant
     {
         [Header("Pool References")]
         [SerializeField] private SceneObjectPooling<GuestContext> _guestPool;
+        [SerializeField] private StaffBoxPool _staffBoxPool;
 
         // Các script khác chỉ có thể đọc, không thể gán lại
         public SceneObjectPooling<GuestContext> GuestPool => _guestPool;
+        public StaffBoxPool StaffBoxPool => _staffBoxPool;
     
     }
 }

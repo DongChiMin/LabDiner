@@ -24,7 +24,7 @@ namespace LabDiner.Restaurant
         [Tooltip("Độ ưu tiên của event khi nhân viên sẵn sàng (dùng cho trường hợp nhân viên được quản lý bởi nhiều manager). Số càng lớn thì độ ưu tiên càng cao (được gọi trước khi Raise event).")]
         [SerializeField] private int _StaffAvailableEventPriority = 0;
         [SerializeField] List<TStaff> _staffs = new();
-        [SerializeField] Queue<TTask> _taskQueue = new();
+        Queue<TTask> _taskQueue = new();
 
         [Header("Optional")]
         [SerializeField, MaybeNull] private GameEvent<Station> _onStationAvailable;
@@ -65,6 +65,12 @@ namespace LabDiner.Restaurant
         /// <param name="task"></param>
         /// <returns></returns>
         protected virtual TTask ProcessTaskBeforeExecute(TTask task) => task;
+
+        public void AssignNewStaff(TStaff staff)
+        {
+            _staffs.Add(staff);
+            HandleStaffAvailable(staff);
+        }
         #endregion
 
         protected void HandleNewTask(TTask newTask)
