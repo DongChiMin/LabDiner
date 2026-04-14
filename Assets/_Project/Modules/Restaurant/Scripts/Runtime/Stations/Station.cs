@@ -13,7 +13,7 @@ namespace LabDiner.Restaurant
         public bool IsAvailable => _isAvailable;
         [SerializeField] private StationEvent onStationAvailable;
         
-        [Header("Attributes")]
+        [Header("[DEBUG]")]
         [SerializeField] private CoreStation _coreStation;
         [SerializeField] private Transform _workPos;
         [SerializeField] private bool _isAvailable = true;

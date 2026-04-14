@@ -20,7 +20,7 @@ namespace LabDiner.Restaurant
         public double CurrentCost;
         public float CurrentProcessTime;
     }
-    public class CoreStationUI : BasePanel
+    public class CoreStationUI : MonoBehaviour
     {
         public Action OnUpgradeButtonClicked;
 
@@ -94,12 +94,12 @@ namespace LabDiner.Restaurant
             ToggleUpgradeButton(currentCoin >= data.CurrentCost);
         }
 
-        public override void Show()
+        public void Show()
         {
             _popScaleEffect.Show();
         }
 
-        public override void Hide(Action onComplete = null)
+        public void Hide(Action onComplete = null)
         {
                 _popScaleEffect.Hide(() =>
                 {

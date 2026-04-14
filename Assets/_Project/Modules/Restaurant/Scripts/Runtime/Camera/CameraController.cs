@@ -17,6 +17,7 @@ namespace LabDiner.Restaurant
         private float _targetY;
         private Vector2 _lastDragPos;
         private bool _isDragging;
+        private bool _isLockedByUI;
 
         public void Init(LevelConfigSO config)
         {
@@ -33,6 +34,7 @@ namespace LabDiner.Restaurant
             InputReader.OnPointerDown += HandlePointerDown;
             InputReader.OnDrag += HandleDrag;
             InputReader.OnPointerUp += HandlePointerUp;
+            UIManager.OnUIStateChanged += SetLock;
         }
 
         private void OnDisable()
@@ -41,10 +43,19 @@ namespace LabDiner.Restaurant
             InputReader.OnPointerDown -= HandlePointerDown;
             InputReader.OnDrag -= HandleDrag;
             InputReader.OnPointerUp -= HandlePointerUp;
+            UIManager.OnUIStateChanged -= SetLock;
+        }
+
+        private void SetLock(bool isLocked)
+        {
+            _isLockedByUI = isLocked;
+            if (isLocked) _isDragging = false; // Ngắt drag ngay lập tức nếu đang vuốt mà UI hiện lên
         }
 
         private void HandlePointerDown(Vector2 pos)
         {
+            if (_isLockedByUI) return;
+
             _lastDragPos = pos;
             _isDragging = true;
         }
@@ -56,7 +67,7 @@ namespace LabDiner.Restaurant
 
         private void HandleDrag(Vector2 currentPos)
         {
-            if (!_isDragging) return;
+            if (!_isDragging || _isLockedByUI) return;
 
             // Tính toán độ dời so với frame trước
             float deltaY = currentPos.y - _lastDragPos.y;

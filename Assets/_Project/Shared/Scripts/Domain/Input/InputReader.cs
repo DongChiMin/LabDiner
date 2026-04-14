@@ -11,6 +11,7 @@ namespace LabDiner.Shared.Input
         public static Action<Vector2> OnGlobalClick;
         public static Action<Vector2> OnPointerDown;
         public static Action<Vector2> OnPointerUp;
+        public static Action OnBackRequested;
         public static Action<Vector2> OnTap;
         public static Action<Vector2> OnDrag;
 
@@ -22,6 +23,7 @@ namespace LabDiner.Shared.Input
         // Khai báo các Action của New Input System
         private InputAction _clickAction;
         private InputAction _positionAction;
+        private InputAction _backAction;
 
         // Internal state để phân biệt giữa Click và Drag
         private Vector2 _startPos;
@@ -33,21 +35,27 @@ namespace LabDiner.Shared.Input
             _clickAction = new InputAction("Click", binding: "<Pointer>/press");
             _positionAction = new InputAction("Position", binding: "<Pointer>/position");
 
+            _backAction = new InputAction("Back", binding: "<Keyboard>/escape");
+            _backAction.AddBinding("<Pointer>/backbutton");
+
             _clickAction.started += OnPointerDownInternal;
             _clickAction.canceled += OnPointerUpInternal;
             _clickAction.canceled += OnClickPerformed;
+            _backAction.performed += _ => OnBackRequested?.Invoke();
         }
 
         private void OnEnable()
         {
             _clickAction.Enable();
             _positionAction.Enable();
+            _backAction.Enable();
         }
 
         private void OnDisable()
         {
             _clickAction.Disable();
             _positionAction.Disable();
+            _backAction.Disable();
         }
 
         private void Update()

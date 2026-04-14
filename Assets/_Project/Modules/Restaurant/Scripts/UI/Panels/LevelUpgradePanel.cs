@@ -13,10 +13,9 @@ namespace LabDiner.Restaurant
     {
         public Button CloseButton => _closeButton;
         
+        [Header("UI References")]
         [SerializeField] private Button _closeButton;
-        [SerializeField] private FadeSlideEffect _contentEffect;
         [SerializeField] private ClickOutsideEffect _clickOutsideEffect;
-        [SerializeField] private CanvasGroup _backgroundCanvas;
 
         void OnEnable()
         {
@@ -26,30 +25,6 @@ namespace LabDiner.Restaurant
         void OnDisable()
         {
             _clickOutsideEffect.OnClickOutside -= HandleClickOutside;
-        }
-
-        public override void Show()
-        {
-            _backgroundCanvas.gameObject.SetActive(true);
-            _contentEffect.gameObject.SetActive(true);
-
-            _backgroundCanvas.alpha = 0f;
-            DOTween.To(() => _backgroundCanvas.alpha, x => _backgroundCanvas.alpha = x, 1f, _contentEffect.Duration).SetUpdate(true);
-
-            _contentEffect.Show();
-        }
-
-        public override void Hide(Action onComplete = null)
-        {
-            DOTween.To(() => _backgroundCanvas.alpha, x => _backgroundCanvas.alpha = x, 0f, _contentEffect.Duration).SetUpdate(true);
-
-            // Kêu Content ẩn đi, khi ẩn xong thì tắt GameObject cha
-            _contentEffect.Hide(() =>
-            {
-                onComplete?.Invoke();
-                _backgroundCanvas.gameObject.SetActive(false); // Tắt background
-                _contentEffect.gameObject.SetActive(false); // Reset vị trí content
-            });
         }
 
         private void HandleClickOutside()
