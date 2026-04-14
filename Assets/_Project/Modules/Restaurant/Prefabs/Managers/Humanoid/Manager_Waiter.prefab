@@ -140,7 +140,7 @@ MonoBehaviour:
   _spawnParent: {fileID: 6719317106291797654}
   _mainManagers:
   - {fileID: 9020278378083079286}
-  - {fileID: 9020278378083079286}
+  - {fileID: 6411108583045803783}
   _restPositions:
   - {fileID: 8181911120926906681}
   - {fileID: 1957314529918776892}
