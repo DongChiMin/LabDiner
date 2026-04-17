@@ -66,10 +66,10 @@ namespace LabDiner.Restaurant
             {
                 case CookingTask cookingTask:
                     _onCookingTaskComplete.Raise(cookingTask);
+                    _onCoinAdded.Raise(cookingTask.Profit);
                     break;
                 case Order order:
                     _onOrderServed.Raise(order);
-                    _onCoinAdded.Raise(order.Profit);
                     break;
                 default:
                     Debug.LogError("Unsupported task type for MultitaskChef: " + task.GetType());

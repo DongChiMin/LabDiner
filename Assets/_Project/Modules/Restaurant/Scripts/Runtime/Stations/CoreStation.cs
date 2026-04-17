@@ -34,6 +34,7 @@ namespace LabDiner.Restaurant
         [Header("Logic")]
         [SerializeField] private CoreStationUI _CoreStationUI;
         [SerializeField] private CoreStationStarUI _CoreStationStarUI;
+        [SerializeField] private CoreStationUnlockUI _CoreStationUnlockUI;
 
         [Header("Events")]
         [SerializeField] private LevelCoinEvent _onCoinSpent;
@@ -84,9 +85,11 @@ namespace LabDiner.Restaurant
             _CoreStationUI.Setup(data);
         }
 
+        //Khi click vào trạm:
+        // Nếu chưa mở khóa: Hiện UI mở khóa, hiển thị thông tin về trạm và yêu cầu người chơi chi tiền để mở khóa
+        // Nếu đã mở khóa: Hiện UI nâng cấp, hiển thị thông tin về trạm, lợi nhuận hiện tại, chi phí nâng cấp và tiến trình sao. Cho phép người chơi nâng cấp trạm nếu có đủ tiền.
         public void OnInteract()
         {
-            Debug.Log("TODO: mở UI nâng cấp trạm chính tại đây");
             CoreStationUIData data = new CoreStationUIData()
             {
                 CurrentLevel = _currentLevel,
@@ -99,9 +102,19 @@ namespace LabDiner.Restaurant
                 CurrentCost = _currentCost,
                 CurrentProcessTime = _currentProcessTime,
             };
-            _CoreStationUI.Setup(data);
-            _CoreStationStarUI.Setup(_currentStar, _maxStar);
-            _CoreStationUI.Show();
+
+            if(_currentLevel <= 0)
+            {
+                _CoreStationUnlockUI.Setup(data);
+                _CoreStationUnlockUI.Show();
+                return;
+            }
+            else
+            {
+                _CoreStationStarUI.Setup(_currentStar, _maxStar);
+                _CoreStationUI.Setup(data);
+                _CoreStationUI.Show();
+            }
             
         }
 

@@ -1872,7 +1872,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0346f514f67bdf145918c0ad5d86689a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 0
+  _onPanelRegister: {fileID: 11400000, guid: bf61dd964ce08fa45bd40784a3873571, type: 2}
+  _onPanelShow: {fileID: 11400000, guid: cc5009086cf57064199257c8b4da5ea1, type: 2}
+  _onPanelHide: {fileID: 11400000, guid: 2257ae19d9ac5c14597710975203e43f, type: 2}
+  _isUIBlocked: 0
+  _debugOpenPanels: []
+  _allPanelsInScene: []
 --- !u!1 &1398963954
 GameObject:
   m_ObjectHideFlags: 0
@@ -3655,6 +3660,18 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7433665396893766804, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
+      propertyPath: _onPanelHide
+      value: 
+      objectReference: {fileID: 11400000, guid: 2257ae19d9ac5c14597710975203e43f, type: 2}
+    - target: {fileID: 7433665396893766804, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
+      propertyPath: _onPanelShow
+      value: 
+      objectReference: {fileID: 11400000, guid: cc5009086cf57064199257c8b4da5ea1, type: 2}
+    - target: {fileID: 7433665396893766804, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
+      propertyPath: _onPanelRegister
+      value: 
+      objectReference: {fileID: 11400000, guid: bf61dd964ce08fa45bd40784a3873571, type: 2}
     - target: {fileID: 8621211144143222604, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -3681,15 +3698,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8784286931084082985, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784286931084082985, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8784286931084082985, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1350
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9151655555502720349, guid: fabd728ee91bc664e8be6ddad272cf3a, type: 3}
       propertyPath: m_SizeDelta.y
