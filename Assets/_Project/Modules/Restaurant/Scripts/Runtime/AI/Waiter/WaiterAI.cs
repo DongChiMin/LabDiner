@@ -28,7 +28,7 @@ namespace LabDiner.Restaurant
         {
             servingOrder = order;
             // 1. Đi đến bàn
-            yield return _context.CtxMover.MoveTo(servingOrder.OrderBy.DiningTable.WorkPos.position);
+            yield return _context.CtxMover.MoveTo(servingOrder.OrderBy.DiningSeat.WorkPos.position);
 
             //2. Phục vụ
             yield return _context.CtxBehavior.Serve(servingOrder);
@@ -48,7 +48,7 @@ namespace LabDiner.Restaurant
             yield return _context.CtxBehavior.PickUpFromPassTable(cookingTask);
 
             //3. Đi đến bàn
-            yield return _context.CtxMover.MoveTo(cookingTask.Order.OrderBy.DiningTable.WorkPos.position);
+            yield return _context.CtxMover.MoveTo(cookingTask.Order.OrderBy.DiningSeat.WorkPos.position);
 
             //4. Phục vụ
             yield return _context.CtxBehavior.GiveFoodToGuest(cookingTask);

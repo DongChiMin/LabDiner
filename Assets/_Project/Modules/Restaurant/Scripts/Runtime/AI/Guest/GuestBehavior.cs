@@ -53,10 +53,10 @@ namespace LabDiner.Restaurant
             }
         }
 
-        public IEnumerator WaitForServe(DiningTable table)
+        public IEnumerator WaitForServe(DiningSeat seat)
         {
             if (_order == null) Debug.LogError("Order của khách này đang trống!");
-            table.WaitingForServe(_order);
+            seat.WaitingForServe(_order);
             while (!_isServed)
             {
                 yield return null;

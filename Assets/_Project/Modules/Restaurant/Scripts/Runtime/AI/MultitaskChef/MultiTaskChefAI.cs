@@ -30,7 +30,7 @@ namespace LabDiner.Restaurant
             yield return _behavior.Cook(task);
 
             //3. Di chuyển đến vị trí khách
-            yield return _mover.MoveTo(task.Order.OrderBy.DiningTable.WorkPos.position);
+            yield return _mover.MoveTo(task.Order.OrderBy.DiningSeat.WorkPos.position);
 
             //4. Đưa món cho khách
             yield return _context.CtxBehavior.GiveFoodToGuest(task);
@@ -45,7 +45,7 @@ namespace LabDiner.Restaurant
             Debug.Log("MultitaskChef bắt đầu phục vụ order: " + order.OrderBy);
             Debug.Log("Context" + _context.CtxMover.name + " - " + _context.CtxBehavior.name);
             // 1. Đi đến bàn
-            yield return _context.CtxMover.MoveTo(servingOrder.OrderBy.DiningTable.WorkPos.position);
+            yield return _context.CtxMover.MoveTo(servingOrder.OrderBy.DiningSeat.WorkPos.position);
 
             //2. Phục vụ
             yield return _context.CtxBehavior.Serve(servingOrder);

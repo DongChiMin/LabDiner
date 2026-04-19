@@ -50,7 +50,7 @@ namespace LabDiner.Restaurant
             return CalculatePosition( _waitingGuests.Count - 1 );
         }
 
-        public void PopNextGuest(DiningTable table)
+        public void PopNextGuest(DiningSeat seat)
         {
             if (_waitingGuests.Count == 0) return;
 
@@ -60,8 +60,8 @@ namespace LabDiner.Restaurant
             // Bắt tất cả người còn lại tiến lên
             RearrangeQueue();
 
-            LevelManagerContext.Instance.DiningTableManager.OccupyTable(table, guest);
-            guest.FromWaitingLineToDiningTable(table);
+            LevelManagerContext.Instance.DiningTableManager.OccupySeat(seat, guest);
+            guest.FromWaitingLineToDiningSeat(seat);
 
             StopPatience();
             if (_waitingGuests.Count > 0)

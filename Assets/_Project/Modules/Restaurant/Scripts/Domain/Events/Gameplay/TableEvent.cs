@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant
 {
-    [CreateAssetMenu(fileName = "NewDiningTableEvent", menuName = "Events/Table/Dining Table Event")]
-    public class TableEvent : GameEvent<DiningTable> { }
+    [CreateAssetMenu(fileName = "NewDiningSeatEvent", menuName = "Events/Table/Dining Seat Event")]
+    public class TableEvent : GameEvent<DiningSeat> { }
 }

@@ -6,10 +6,10 @@ using UnityEngine;
 namespace LabDiner.Restaurant
 {
     [System.Serializable]
-    public struct Table
+    public struct DiningTable
     {
         public GameObject TableInstance;
-        public List<DiningTable> Seats;
+        public List<DiningSeat> Seats;
     }
 
     public class DiningTableManager : MonoBehaviour, ILevelInitializable
@@ -20,22 +20,22 @@ namespace LabDiner.Restaurant
         [SerializeField] private TableEvent _onTableDirty;
 
         [Header("References")]
-        [SerializeField] private List<Table> _tables = new List<Table>();
+        [SerializeField] private List<DiningTable> _tables = new List<DiningTable>();
 
         [Header("DEBUG")]
-        [SerializeField] private List<DiningTable> _spawnedSeats = new List<DiningTable>();
-        [SerializeField] private List<Table> _spawnedTables = new List<Table>();
+        [SerializeField] private List<DiningSeat> _spawnedSeats = new List<DiningSeat>();
+        [SerializeField] private List<DiningTable> _spawnedTables = new List<DiningTable>();
         private LevelConfigSO _levelConfig;
 
         void OnEnable()
         {
-            _onTableDirty.Register(SetTableDirty);
+            _onTableDirty.Register(SetSeatDirty);
             _onGuestQuantityChanged.Register(HandleGuestQuantityChanged);
         }
 
         void OnDisable()
         {
-            _onTableDirty.Unregister(SetTableDirty);
+            _onTableDirty.Unregister(SetSeatDirty);
             _onGuestQuantityChanged.Unregister(HandleGuestQuantityChanged);
         }
 
@@ -48,9 +48,9 @@ namespace LabDiner.Restaurant
         }
 
         #region API
-        public List<DiningTable> GetAvailableTables()
+        public List<DiningSeat> GetAvailableSeats()
         {
-            List<DiningTable> availableSeats = new List<DiningTable>();
+            List<DiningSeat> availableSeats = new List<DiningSeat>();
             foreach (var seat in _spawnedSeats)
             {
                 if (!seat.IsOccupied)
@@ -59,22 +59,22 @@ namespace LabDiner.Restaurant
             return availableSeats;   
         }
 
-        public void OccupyTable(DiningTable table, GuestContext guest)
+        public void OccupySeat(DiningSeat seat, GuestContext guest)
         {
-            table.Occupy(guest);
+            seat.Occupy(guest);
         }
 
         #endregion
 
 
         #region Private Methods
-        private void SetTableDirty(DiningTable table)
+        private void SetSeatDirty(DiningSeat seat)
         {
-            Debug.Log("TODO: có thể set trạng thái bàn bẩn vào đây");
-            table.Occupy(null);
+            Debug.Log("TODO: có thể set trạng thái ghế bẩn vào đây");
+            seat.Occupy(null);
 
             //Sau khi dọn xong
-            _onTableFreed.Raise(table);
+            _onTableFreed.Raise(seat);
         }
 
         private void HandleGuestQuantityChanged(int quantity)
@@ -88,11 +88,11 @@ namespace LabDiner.Restaurant
         private void SpawnNewTable()
         {
             int index = _spawnedTables.Count;
-            Table spawnTable = _tables[index];
+            DiningTable spawnTable = _tables[index];
             _spawnedTables.Add(spawnTable);
 
             spawnTable.TableInstance.SetActive(true);
-            foreach(DiningTable seat in spawnTable.Seats)
+            foreach(DiningSeat seat in spawnTable.Seats)
             {
                 _spawnedSeats.Add(seat);
             }
@@ -104,7 +104,7 @@ namespace LabDiner.Restaurant
         private void ValidateData()
         {
             int totalSeat = 0;
-            foreach(Table table in _tables)
+            foreach(DiningTable table in _tables)
             {
                 totalSeat += table.Seats.Count;
             }
@@ -117,9 +117,9 @@ namespace LabDiner.Restaurant
         void OnDrawGizmos(){
             if(_tables == null) return;
 
-            foreach(Table table in _tables)
+            foreach(DiningTable table in _tables)
             {
-                foreach(DiningTable seat in table.Seats)
+                foreach(DiningSeat seat in table.Seats)
                 {
                     Gizmos.color = seat.IsOccupied ? Color.red : Color.green;
                     Gizmos.DrawWireSphere(seat.transform.position, 0.2f);

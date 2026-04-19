@@ -77,7 +77,7 @@ namespace LabDiner.Restaurant
                 //0. Các biến cần sử dụng
                 bool HasWaitingLine = LevelManagerContext.Instance.HasWaitingLine;
                 bool hasAnyUnlockedStation = LevelManagerContext.Instance.CoreStationManager.HasAnyUnlockedStation();
-                List<DiningTable> availableTables = LevelManagerContext.Instance.DiningTableManager.GetAvailableTables();
+                List<DiningSeat> availableSeats = LevelManagerContext.Instance.DiningTableManager.GetAvailableSeats();
 
 
                 //1. Kiểm tra số lượng khách hiện tại có vượt quá max không
@@ -87,7 +87,7 @@ namespace LabDiner.Restaurant
                 if (!hasAnyUnlockedStation) continue;
 
                 //3. Kiểm tra nếu không dùng WaitingLine và hết bàn trong restaurant: không tạo khách mới
-                if (!HasWaitingLine && availableTables.Count <= 0) continue;
+                if (!HasWaitingLine && availableSeats.Count <= 0) continue;
 
                 //3. Spawn khách mới
                 GuestContext guest = SpawnGuest();
@@ -106,11 +106,11 @@ namespace LabDiner.Restaurant
                 }
 
                 //6.[Hành động] Nếu có bàn trống, khách sẽ ngồi vào bàn đó, set trạng thái bàn occupied, và bắt đầu hành trình của khách
-                if (availableTables.Count > 0)
+                if (availableSeats.Count > 0)
                 {
-                    DiningTable selectedTable = availableTables[Random.Range(0, availableTables.Count)];
-                    LevelManagerContext.Instance.DiningTableManager.OccupyTable(selectedTable, guest);
-                    guest.Setup(order, selectedTable.transform.position, _exitPoint.position, selectedTable);
+                    DiningSeat selectedSeat = availableSeats[Random.Range(0, availableSeats.Count)];
+                    LevelManagerContext.Instance.DiningTableManager.OccupySeat(selectedSeat, guest);
+                    guest.Setup(order, selectedSeat.transform.position, _exitPoint.position, selectedSeat);
                     continue;
                 }
                 //7.[Hành động] Nếu không có bàn trống nhưng có hàng chờ, khách sẽ đi vào hàng chờ

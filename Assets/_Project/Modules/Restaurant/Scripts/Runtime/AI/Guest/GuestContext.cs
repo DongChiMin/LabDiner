@@ -13,7 +13,7 @@ namespace LabDiner.Restaurant
         public GuestBehavior CtxBehavior => _guestBehavior;
         public GuestMover CtxMover => _guestMover;
         public GuestLogic CtxLogic => _guestLogic;
-        public DiningTable DiningTable => _diningTable;
+        public DiningSeat DiningSeat => _diningSeat;
         public GuestOrderUI OrderCanvas => _guestOrderCanvas;
 
         [Header("Events")]
@@ -28,24 +28,24 @@ namespace LabDiner.Restaurant
         [SerializeField] private GuestOrderUI _guestOrderCanvas;
 
         [Header("[Debug]")]
-        [SerializeField] private DiningTable _diningTable;
+        [SerializeField] private DiningSeat _diningSeat;
 
         #region API
-        public void Setup(Order order, Vector3 destination, Vector3 exitPos, DiningTable table = null)
+        public void Setup(Order order, Vector3 destination, Vector3 exitPos, DiningSeat seat = null)
         {
             _guestBehavior.SetOrder(order);
             _guestLogic.SetOrder(order);
-            _diningTable = table;
-            StartCoroutine(_guestAI.MainRoutine(destination, exitPos, table));
+            _diningSeat = seat;
+            StartCoroutine(_guestAI.MainRoutine(destination, exitPos, seat));
         }
 
         public void SetServedStatus(bool status) {
             _guestBehavior.SetServedStatus(status);
         }
 
-        public void FromWaitingLineToDiningTable( DiningTable table) {
-            _diningTable = table;
-            _guestAI.FromWaitingLineToDiningTable(table);
+        public void FromWaitingLineToDiningSeat( DiningSeat seat) {
+            _diningSeat = seat;
+            _guestAI.FromWaitingLineToDiningSeat(seat);
         }
 
         public void ReceiveFood(CookingTask cookingTask)

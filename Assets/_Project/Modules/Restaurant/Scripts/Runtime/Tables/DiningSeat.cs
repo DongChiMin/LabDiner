@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant
 {
-    public class DiningTable : MonoBehaviour
+    public class DiningSeat : MonoBehaviour
     {
         public bool IsOccupied => _occupiedGuest != null;
         public Transform WorkPos => _workPos;
