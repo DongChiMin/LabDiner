@@ -1,8 +1,8 @@
-
 using System.Collections.Generic;
+using LabDiner.Restaurant.Environment;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class PassTableManager : MonoBehaviour
     {

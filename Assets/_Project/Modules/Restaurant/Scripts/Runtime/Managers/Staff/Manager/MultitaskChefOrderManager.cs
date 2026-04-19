@@ -1,7 +1,7 @@
-using System.Collections.Generic;
-using UnityEngine;
+using LabDiner.Restaurant.Humanoid;
+using LabDiner.Restaurant.Model;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class MultitaskChefOrderManager : StaffManager<MultitaskChefContext, Order>
     {

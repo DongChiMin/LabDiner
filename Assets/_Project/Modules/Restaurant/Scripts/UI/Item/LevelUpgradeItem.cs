@@ -1,10 +1,9 @@
-using LabDiner.Shared.SO;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
+using LabDiner.Restaurant.SO;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class LevelUpgradeItem : MonoBehaviour
     {         

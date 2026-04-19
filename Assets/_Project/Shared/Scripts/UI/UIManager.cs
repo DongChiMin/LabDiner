@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
+using LabDiner.Shared.Event;
 using LabDiner.Shared.Input;
 using UnityEngine;
 
-namespace LabDiner.Shared
+namespace LabDiner.Shared.UI
 {
     public class UIManager : MonoBehaviour
     {

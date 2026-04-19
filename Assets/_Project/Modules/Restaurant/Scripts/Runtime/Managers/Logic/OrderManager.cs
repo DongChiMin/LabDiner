@@ -1,8 +1,10 @@
 using System.Collections.Generic;
-using LabDiner.Shared.Events;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Model;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class OrderManager : MonoBehaviour
     {

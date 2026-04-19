@@ -1,6 +1,7 @@
+using LabDiner.Restaurant.Humanoid;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     [RequireComponent(typeof(MultitaskChefCookingTaskManager))]
     [RequireComponent(typeof(MultitaskChefOrderManager))]

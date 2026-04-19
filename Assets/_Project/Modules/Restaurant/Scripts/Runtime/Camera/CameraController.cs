@@ -1,6 +1,6 @@
-using LabDiner.Shared.SO;
-using LabDiner.Shared;
+using LabDiner.Restaurant.SO;
 using LabDiner.Shared.Input;
+using LabDiner.Shared.UI;
 using UnityEngine;
 
 namespace LabDiner.Restaurant

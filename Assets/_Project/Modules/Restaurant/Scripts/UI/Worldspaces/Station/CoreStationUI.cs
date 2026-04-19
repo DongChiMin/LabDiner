@@ -1,14 +1,12 @@
 using System;
 using System.Collections.Generic;
-using LabDiner.Shared;
-using LabDiner.Shared.SO;
+using LabDiner.Shared.Extension;
+using LabDiner.Shared.Input;
 using LabDiner.Shared.UI;
-using LabDiner.UI;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public struct CoreStationUIData
     {

@@ -3,7 +3,7 @@ using UnityEngine.UI; // Cần cái này để dùng Selectable
 using UnityEngine.EventSystems;
 using System;
 
-namespace LabDiner.UI
+namespace LabDiner.Shared.Input
 {
     // Kế thừa Selectable để có sẵn thuộc tính .interactable và hệ thống Transition màu sắc
     public class HoldableButton : Selectable, IPointerDownHandler, IPointerUpHandler, IPointerExitHandler

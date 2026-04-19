@@ -1,9 +1,9 @@
-
-using System.Collections;
 using System.Collections.Generic;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Model;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class ServeManager : MonoBehaviour
     {

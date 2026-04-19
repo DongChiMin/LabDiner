@@ -1,12 +1,11 @@
-
-using System.Collections;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Interface;
+using LabDiner.Shared.Event;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using LabDiner.Restaurant;
-using LabDiner.Shared.Events;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     /// <summary>
     /// Một nhân viên có thể được quản lý bởi nhiều manager

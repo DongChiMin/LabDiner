@@ -1,11 +1,10 @@
-
-using System;
 using System.Collections.Generic;
-using LabDiner.Shared;
-using LabDiner.Shared.SO;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.SO;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class CoreStationManager : MonoBehaviour
     {

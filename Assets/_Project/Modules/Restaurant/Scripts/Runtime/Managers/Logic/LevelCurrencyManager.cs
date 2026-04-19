@@ -1,8 +1,8 @@
-
-using LabDiner.Shared;
+using LabDiner.Shared.Event;
+using LabDiner.Shared.Extension;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class LevelCurrencyManager : MonoBehaviour
     {

@@ -1,8 +1,9 @@
-using LabDiner.Shared;
+using LabDiner.Shared.Event;
+using LabDiner.Shared.Extension;
 using TMPro;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class CurrencyHUD : MonoBehaviour
     {

@@ -1,8 +1,9 @@
 
+using LabDiner.Restaurant.Event;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class ReputationBarHUD : MonoBehaviour
     {

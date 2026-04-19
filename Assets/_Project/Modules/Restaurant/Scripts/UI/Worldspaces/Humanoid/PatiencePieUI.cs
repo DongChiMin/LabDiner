@@ -1,9 +1,8 @@
-using System.Collections;
 using LabDiner.Shared.UI;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class PatiencePieUI : MonoBehaviour
     {

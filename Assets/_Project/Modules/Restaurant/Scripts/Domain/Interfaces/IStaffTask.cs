@@ -1,7 +1,4 @@
-
-using System.Numerics;
-
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Interface
 {
     public interface IStaffTask 
     {

@@ -1,7 +1,9 @@
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Model;
 using TMPro;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class StaffCarryDishUI : MonoBehaviour
     {

@@ -1,7 +1,6 @@
-
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Interface
 {
     public interface IStaff
     {

@@ -1,18 +1,19 @@
-
 using System;
 using System.Collections.Generic;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Humanoid;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
-    [System.Serializable]
-public class ReputationMilestone
-{
-    public string Name;
-    public int Threshold;
-    public float BonusCookingSpeed; // Ví dụ: +0.1f (tăng 10%)
-    public float BonusTipChance;    // Ví dụ: +0.05f (tăng 5% tỉ lệ tip)
-}
+    [Serializable]
+    public class ReputationMilestone
+    {
+        public string Name;
+        public int Threshold;
+        public float BonusCookingSpeed; // Ví dụ: +0.1f (tăng 10%)
+        public float BonusTipChance;    // Ví dụ: +0.05f (tăng 5% tỉ lệ tip)
+    }
 
     public class ReputationManager : MonoBehaviour
     {

@@ -1,26 +1,29 @@
 using UnityEngine;
 
-public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
+namespace LabDiner.Shared.DesignPattern
 {
-    [SerializeField] private bool dontDestroyOnLoad = false;
-    private static T instance;
-
-    public static T Instance => instance;
-
-    protected virtual void Awake()
+    public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
-        if (instance != null && instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        [SerializeField] private bool dontDestroyOnLoad = false;
+        private static T instance;
 
-        instance = this as T;
-        transform.SetParent(null);
+        public static T Instance => instance;
 
-        if (dontDestroyOnLoad)
+        protected virtual void Awake()
         {
-            DontDestroyOnLoad(gameObject);
+            if (instance != null && instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
+
+            instance = this as T;
+            transform.SetParent(null);
+
+            if (dontDestroyOnLoad)
+            {
+                DontDestroyOnLoad(gameObject);
+            }
         }
     }
 }

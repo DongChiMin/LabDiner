@@ -1,5 +1,4 @@
 using UnityEngine;
-using DG.Tweening;
 using System;
 
 namespace LabDiner.Shared.UI

@@ -1,6 +1,7 @@
-using LabDiner.Restaurant;
-
-public interface IStaffRegisterable<TStaff> where TStaff : IStaff
+namespace LabDiner.Restaurant.Interface
 {
-    void AssignNewStaff(TStaff staff);
+    public interface IStaffRegisterable<TStaff> where TStaff : IStaff
+    {
+        void AssignNewStaff(TStaff staff);
+    }
 }

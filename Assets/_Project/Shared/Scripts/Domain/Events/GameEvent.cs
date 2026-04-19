@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace LabDiner.Shared.Events
+namespace LabDiner.Shared.Event
 {
     public abstract class BaseGameEvent : ScriptableObject { }
 

@@ -1,8 +1,7 @@
 using System;
 using System.Globalization;
-using UnityEngine;
 
-namespace LabDiner.Shared
+namespace LabDiner.Shared.Extension
 {
     public static class CurrencyFormatter
     {

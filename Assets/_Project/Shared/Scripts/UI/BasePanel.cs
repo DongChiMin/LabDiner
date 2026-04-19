@@ -1,9 +1,8 @@
 using DG.Tweening;
-using LabDiner.Shared.UI;
+using LabDiner.Shared.Event;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace LabDiner.Shared
+namespace LabDiner.Shared.UI
 {
     public abstract class BasePanel<T> : BasePanel
     {

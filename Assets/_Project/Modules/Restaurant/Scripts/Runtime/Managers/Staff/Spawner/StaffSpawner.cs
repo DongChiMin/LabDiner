@@ -1,9 +1,11 @@
 using System.Collections.Generic;
-using LabDiner.Shared;
-using LabDiner.Shared.SO;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Interface;
+using LabDiner.Restaurant.Pooling;
+using LabDiner.Restaurant.SO;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public abstract class StaffSpawner<TStaff> : MonoBehaviour, IStaffUnboxer
         where TStaff : Component, IStaff

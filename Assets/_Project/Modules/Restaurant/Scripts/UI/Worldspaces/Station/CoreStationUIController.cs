@@ -1,8 +1,7 @@
-
-using System.Collections.Generic;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Shared.Event;
 using LabDiner.Shared.Input;
 using UnityEngine;
-using UnityEngine.UI;
 
 namespace LabDiner.Restaurant.UI
 {

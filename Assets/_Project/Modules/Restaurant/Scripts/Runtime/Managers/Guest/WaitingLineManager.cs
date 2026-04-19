@@ -1,10 +1,12 @@
-
 using System.Collections;
 using System.Collections.Generic;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Humanoid;
+using LabDiner.Restaurant.UI;
 using UnityEngine;
-using UnityEngine.UI;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class WaitingLineManager : MonoBehaviour
     {

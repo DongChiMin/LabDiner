@@ -1,7 +1,8 @@
-using LabDiner.Shared;
+using LabDiner.Restaurant.Interface;
+using LabDiner.Restaurant.SO;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class CameraManagerContext : MonoBehaviour, ILevelInitializable
     {

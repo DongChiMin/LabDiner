@@ -1,12 +1,10 @@
 using System;
-using System.Collections.Generic;
-using LabDiner.Shared;
 using LabDiner.Shared.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class CoreStationUnlockUI : MonoBehaviour
     {

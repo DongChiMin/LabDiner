@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using LabDiner.Shared;
-using LabDiner.Shared.SO;
-using LabDiner.Shared.UI;
+using LabDiner.Restaurant.Manager;
+using LabDiner.Restaurant.SO;
+using LabDiner.Shared.Event;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class LevelUpgradeController : MonoBehaviour
     {

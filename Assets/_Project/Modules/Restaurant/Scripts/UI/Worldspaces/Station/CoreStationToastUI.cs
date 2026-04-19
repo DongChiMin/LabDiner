@@ -4,7 +4,7 @@ using LabDiner.Shared.UI;
 using TMPro;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.UI
 {
     public class CoreStationToastUI : MonoBehaviour
     {

@@ -1,7 +1,9 @@
-using LabDiner.Shared;
+using LabDiner.Restaurant.Interface;
+using LabDiner.Restaurant.SO;
+using LabDiner.Shared.DesignPattern;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class LevelManagerContext : Singleton<LevelManagerContext>, ILevelInitializable
     {

@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace LabDiner.Shared.Input
 {
     public interface IInteractable

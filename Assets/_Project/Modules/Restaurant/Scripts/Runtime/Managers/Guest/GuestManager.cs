@@ -1,12 +1,14 @@
-
-
 using System.Collections;
 using System.Collections.Generic;
-using LabDiner.Shared;
-using LabDiner.Shared.SO;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Humanoid;
+using LabDiner.Restaurant.Model;
+using LabDiner.Restaurant.Pooling;
+using LabDiner.Restaurant.SO;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class GuestManager : MonoBehaviour
     {

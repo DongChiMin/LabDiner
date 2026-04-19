@@ -1,9 +1,12 @@
-
 using System.Collections.Generic;
-using LabDiner.Shared;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Humanoid;
+using LabDiner.Restaurant.Interface;
+using LabDiner.Restaurant.SO;
 using UnityEngine;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     [System.Serializable]
     public struct DiningTable

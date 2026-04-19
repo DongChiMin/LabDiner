@@ -1,7 +1,10 @@
 
 using System.Collections.Generic;
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Humanoid;
+using LabDiner.Restaurant.Interface;
 
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Model
 {
     [System.Serializable]
     public class Order : IStaffTask

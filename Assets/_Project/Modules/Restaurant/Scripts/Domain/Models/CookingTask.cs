@@ -1,5 +1,8 @@
 
-namespace LabDiner.Restaurant
+using LabDiner.Restaurant.Environment;
+using LabDiner.Restaurant.Interface;
+
+namespace LabDiner.Restaurant.Model
 {
     [System.Serializable]
     public class CookingTask : IStaffTask

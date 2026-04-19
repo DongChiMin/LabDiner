@@ -1,8 +1,7 @@
+using LabDiner.Restaurant.Humanoid;
+using LabDiner.Restaurant.Model;
 
-using System.Collections.Generic;
-using UnityEngine;
-
-namespace LabDiner.Restaurant
+namespace LabDiner.Restaurant.Manager
 {
     public class ShipManager : StaffManager<WaiterContext, CookingTask>
     {
