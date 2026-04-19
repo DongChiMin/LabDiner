@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: station_star_2
   m_EditorClassIdentifier: 
   StarIcon: {fileID: 7175521830830924091, guid: 18d2cccc63b7da54786c0eeffa28c57d, type: 3}
-  Effects:
-  - {fileID: 11400000, guid: 49d1f8a18c5087e47a200de1c45c596a, type: 2}
+  Buffs:
   - {fileID: 11400000, guid: 9350ed0de5f04fa46a6b5cabc181e62f, type: 2}
+  - {fileID: 11400000, guid: 49d1f8a18c5087e47a200de1c45c596a, type: 2}
   rewards:
   - Event: {fileID: 11400000, guid: 7beb386ee4a21204ba5e095ce75e2ee5, type: 2}
     Amount: 1
