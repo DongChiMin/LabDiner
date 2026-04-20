@@ -35,6 +35,14 @@ namespace LabDiner.Restaurant.Manager
             _onGuestQuantityChanged.Unregister(HandleGuestQuantityChanged);
         }
 
+        void Awake()
+        {
+            foreach(DiningTable table in _tables)
+            {
+                table.gameObject.SetActive(false);
+            }
+        }
+
         public void Init(LevelConfigSO config)
         {
             _levelConfig = config;
