@@ -14,7 +14,6 @@ namespace LabDiner.Restaurant.UI
 
         [Header("Common UI")]
         [SerializeField] private Image _missionIcon;
-        [SerializeField] private Image _backgroundImage;
 
         [Header("Mission UI")]
         [SerializeField] private GameObject _missionUI;    //UI phiên bản đang thực thi nhiệm vụ
@@ -41,7 +40,6 @@ namespace LabDiner.Restaurant.UI
             _isRewardable = false;
             
             //Common UI Setup
-            _backgroundImage.color = Color.white;
             _missionIcon.sprite = mission.MissionIcon;
 
             //Upgradable UI Setup
@@ -84,8 +82,6 @@ namespace LabDiner.Restaurant.UI
         {
             _missionUI.SetActive(false);
             _rewardUI.SetActive(true);
-
-            _backgroundImage.color = Color.green;
         }
     }
 }
