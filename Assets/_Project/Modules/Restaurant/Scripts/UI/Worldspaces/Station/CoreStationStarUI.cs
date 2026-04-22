@@ -49,7 +49,6 @@ namespace LabDiner.Restaurant.UI
             {
                 // Nếu vị trí của sao nhỏ hơn số sao hiện tại thì "Sáng", ngược lại "Tối"
                 _spawnedStars[i].sprite = (i < currentStars) ? _activeStarSprite : _inactiveStarSprite;
-                _spawnedStars[i].color = (i < currentStars) ? Color.blue : new Color(1, 1, 1, 0.3f); // Ví dụ: sao không đạt được sẽ mờ đi
             }
         }
 
