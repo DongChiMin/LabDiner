@@ -32,6 +32,11 @@ namespace LabDiner.Restaurant.Environment
             }
         }
 
+        public void SetWorkPos(Transform workPos)
+        {
+            _workPos = workPos;
+        }
+
         public void OnInteract()
         {
             OnClickStation?.Invoke();

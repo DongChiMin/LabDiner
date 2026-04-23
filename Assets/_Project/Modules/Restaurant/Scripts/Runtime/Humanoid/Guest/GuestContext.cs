@@ -1,6 +1,7 @@
 using LabDiner.Restaurant.Environment;
 using LabDiner.Restaurant.Event;
 using LabDiner.Restaurant.Model;
+using LabDiner.Restaurant.UI;
 using UnityEngine;
 
 namespace LabDiner.Restaurant.Humanoid

@@ -300,7 +300,7 @@ namespace LabDiner.Restaurant.Environment
 
 
         #region EDITOR ONLY
-
+        #if UNITY_EDITOR
         private CoreStationSO _lastCoreStationSO;
 
         void OnValidate()
@@ -320,7 +320,7 @@ namespace LabDiner.Restaurant.Environment
 
         void ValidateData()
         {
-            int spawnPointCount = _stationSpawner.SpawnPoints.Count;
+            int spawnPointCount = _stationSpawner.StationPos.Count;
             int maxStationQuantity = 1;
             List<StationStarSO> stars = _coreStationSO.StationStars;
             foreach(var star in stars)
@@ -339,7 +339,7 @@ namespace LabDiner.Restaurant.Environment
                 Debug.LogError($"CoreStation '{_name}' cần {maxStationQuantity} điểm spawn, nhưng chỉ có {spawnPointCount} điểm spawn khả dụng trong StationSpawner.");
             }
         }
-
+        #endif
         #endregion        
     }
 }

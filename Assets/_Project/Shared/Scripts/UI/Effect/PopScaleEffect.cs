@@ -14,6 +14,7 @@ namespace LabDiner.Shared.UI
 
         public override void Show(Action onComplete = null)
         {
+            Debug.Log("Show PopScaleEffect");
             transform.DOKill();
 
             transform.localScale = Vector3.zero;

@@ -20,7 +20,7 @@ namespace LabDiner.Restaurant.Humanoid
         public void SetOrder(Order order)
         {
             _remainingDishes = order.OrderDict;
-            _ctx.OrderCanvas.UpdateOrderDetailText(_remainingDishes);
+            _ctx.OrderCanvas.Setup(_remainingDishes);
         }
 
         public void ReceiveFood(CookingTask cookingTask)
@@ -38,7 +38,7 @@ namespace LabDiner.Restaurant.Humanoid
                 {
                     _ctx.CtxBehavior.SetFoodReceivedEnough(true);
                 }
-                _ctx.OrderCanvas.UpdateOrderDetailText(_remainingDishes);
+                _ctx.OrderCanvas.DecreaseQuantity(receivedDish);
             }
             else
             {
