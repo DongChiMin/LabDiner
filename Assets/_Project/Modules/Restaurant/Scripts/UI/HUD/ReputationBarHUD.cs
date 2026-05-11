@@ -7,7 +7,7 @@ namespace LabDiner.Restaurant.UI
 {
     public class ReputationBarHUD : MonoBehaviour
     {
-        [SerializeField] private ReputationEvent _onReputationChanged;
+        [SerializeField] private FloatEvent _onReputationChanged;
         [SerializeField] private Image _fillImage;
         [Header("[DEBUG]")]
         [SerializeField] private float _currentReputationRatio;

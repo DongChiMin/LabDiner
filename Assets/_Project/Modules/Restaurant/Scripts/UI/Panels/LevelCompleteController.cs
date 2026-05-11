@@ -12,7 +12,7 @@ namespace LabDiner.Restaurant.UI
     public class LevelCompleteController : MonoBehaviour, ILevelInitializable   {
         
         [Header("Events")]
-        [SerializeField] private LevelCompleteEvent _onLevelComplete;
+        [SerializeField] private IntEvent _onLevelComplete;
 
         [Header("Item References")]
         [SerializeField] private LevelCompletePanel _panel;

@@ -14,7 +14,7 @@ namespace LabDiner.Restaurant.UI
         [Header("Events")]
         [SerializeField] private LevelCoinEvent _onCoinUpdated;
         [SerializeField] private LevelCoinEvent _onCoinSpent;
-        [SerializeField] private LevelUpgradableEvent _onLevelUpgradable;
+        [SerializeField] private BoolEvent _onLevelUpgradable;
         [SerializeField] private UIPopupEvent _onPopupShow;
 
         [Header("Item References")]

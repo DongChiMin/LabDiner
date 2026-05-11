@@ -4,6 +4,6 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant.Event
 {
-    [CreateAssetMenu(fileName = "OnCoreStationLevelUpgraded", menuName = "Events/Table/CoreStation Event")]
+    [CreateAssetMenu(fileName = "OnCoreStationLevelUpgraded", menuName = "Events/GamePlay/CoreStation Event")]
     public class CoreStationEvent : GameEvent<CoreStation> { }
 }

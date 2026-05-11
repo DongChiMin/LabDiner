@@ -13,7 +13,7 @@ namespace LabDiner.Restaurant.UI
     public class LevelMissionController : MonoBehaviour, ILevelInitializable
     {
         [Header("Events")]
-        [SerializeField] private LevelCompleteEvent _onLevelComplete;
+        [SerializeField] private IntEvent _onLevelComplete;
         [SerializeField] private CoreStationEvent _onCoreStationLevelUpgraded;
 
         [Header("Item References")]

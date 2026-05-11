@@ -11,7 +11,7 @@ namespace LabDiner.Restaurant.Manager
         public List<CoreStation> CoreStations => coreStations;
 
         [Header("Events")]
-        [SerializeField] private GlobalUpgradeEvent _onAllDishProfitUpgrade;
+        [SerializeField] private LevelUpgradeEvent _onAllDishProfitUpgrade;
         [SerializeField] private DishUpgradeEvent _onDishProfitUpgrade;
         [SerializeField] private DishUpgradeEvent _onDishProcessTimeUpgrade;
 
@@ -153,7 +153,7 @@ namespace LabDiner.Restaurant.Manager
         /// Xử lý khi có một nâng cấp lợi nhuận áp dụng cho tất cả các món ăn.
         /// </summary>
         /// <param name="upgradeSO"></param>
-        private void HandleAllDishProfitUpgrade(GlobalUpgradeSO upgradeSO)
+        private void HandleAllDishProfitUpgrade(LevelUpgradeSO upgradeSO)
         {
             float profitBuffValue = upgradeSO.UpgradeValue;
             foreach (var station in coreStations)

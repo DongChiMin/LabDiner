@@ -7,7 +7,7 @@ namespace LabDiner.Restaurant.UI
 {
     public class UpgradableNotification : MonoBehaviour
     {
-        [SerializeField] private LevelUpgradableEvent _onLevelUpgradable;
+        [SerializeField] private BoolEvent _onLevelUpgradable;
         [SerializeField] private AttentionEffect _attentionEffect;
         [SerializeField] private PopScaleEffect _popScaleEffect;
         private bool _isOn = true;

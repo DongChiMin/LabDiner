@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1f3be5ffddf7e148a117c6b5b1a30b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _diningSeatRuntimeSet: {fileID: 11400000, guid: eef96bd73081a5740b060818e8f03c4d, type: 2}
   _startPoint: {fileID: 3493466367010571069}
   _offsetDirection: {x: -1.5, y: 0, z: 0}
   _onTableFreed: {fileID: 11400000, guid: a89381755ebd995499cd79c7ada1f34c, type: 2}

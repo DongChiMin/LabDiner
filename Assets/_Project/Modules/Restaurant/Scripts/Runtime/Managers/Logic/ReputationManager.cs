@@ -20,7 +20,7 @@ namespace LabDiner.Restaurant.Manager
         [Header("Events")]
         [SerializeField] private GuestEvent _onGuestHappy;
         [SerializeField] private GuestEvent _onGuestLeaveAngry;
-        [SerializeField] private ReputationEvent _onReputationChanged;
+        [SerializeField] private FloatEvent _onReputationChanged;
 
         [Header("Settings")]
         [SerializeField] private List<ReputationMilestone> _milestones;

@@ -31,7 +31,7 @@ namespace LabDiner.Restaurant.SO
         public float maxVerticalPos; // Điểm cao nhất camera có thể lên (tùy độ dài nhà hàng)
 
         [Header("Summary")]
-        [SerializeField] private GlobalUpgradeEvent _onUpgradeGuestQuantity;
+        [SerializeField] private LevelUpgradeEvent _onUpgradeGuestQuantity;
         [ReadOnly] public int maxGuestQuantity;
 
         void OnValidate()
@@ -39,11 +39,11 @@ namespace LabDiner.Restaurant.SO
             maxGuestQuantity = 1;
             foreach(BaseUpgradeSO upgrade in AvailableUpgrades)
             {
-                if (upgrade is GlobalUpgradeSO globalUpgrade)
+                if (upgrade is LevelUpgradeSO levelUpgrade)
                 {
-                    if (globalUpgrade.OnUpgradeRaised == _onUpgradeGuestQuantity)
+                    if (levelUpgrade.OnUpgradeRaised == _onUpgradeGuestQuantity)
                     {
-                        maxGuestQuantity += Mathf.RoundToInt(globalUpgrade.UpgradeValue);
+                        maxGuestQuantity += Mathf.RoundToInt(levelUpgrade.UpgradeValue);
                     }
                 }
             }

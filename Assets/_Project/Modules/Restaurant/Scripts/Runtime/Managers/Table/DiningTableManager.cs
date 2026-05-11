@@ -11,9 +11,9 @@ namespace LabDiner.Restaurant.Manager
     public partial class DiningTableManager : MonoBehaviour, ILevelInitializable
     {
         [Header("Events")]
-        [SerializeField] private GuestQuantityEvent _onGuestQuantityChanged;
-        [SerializeField] private TableEvent _onTableFreed;
-        [SerializeField] private TableEvent _onTableDirty;
+        [SerializeField] private IntEvent _onGuestQuantityChanged;
+        [SerializeField] private DiningSeatEvent _onTableFreed;
+        [SerializeField] private DiningSeatEvent _onTableDirty;
 
         [Header("References")]
         [SerializeField] private DiningSeatRuntimeSetSO _diningSeatRuntimeSet;

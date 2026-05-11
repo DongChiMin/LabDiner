@@ -47,4 +47,11 @@ MonoBehaviour:
   _onCoinAdded: {fileID: 11400000, guid: 762700b435a5f8341a777a47398735eb, type: 2}
   _onCoinSpent: {fileID: 11400000, guid: 98392154598053a4ea4074b11efad5e1, type: 2}
   _onCoinUpdated: {fileID: 11400000, guid: 30c103eea11c968448494f5baffcb7bd, type: 2}
-  _currentCoin: 0
+  _onCoinFlyAdded: {fileID: 11400000, guid: 100c159d769f6404c861d1d8450599f1, type: 2}
+  _onGemAdded: {fileID: 11400000, guid: 7beb386ee4a21204ba5e095ce75e2ee5, type: 2}
+  _onGemFlyAdded: {fileID: 11400000, guid: 7544e3ce532a74a448d1f45265ea3c60, type: 2}
+  _onGemSpent: {fileID: 11400000, guid: d025904a3c7485147a27f4886a734f6e, type: 2}
+  _onGemUpdated: {fileID: 11400000, guid: bb123e6416a1c46448e7eb748503282b, type: 2}
+  _cheatCoin: 5.23a
+  _currentCoin: 5230
+  _currentGem: 0
