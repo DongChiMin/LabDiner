@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cee6c046d87bb34a9f99c70bd1204e2, type: 3}
-  m_Name: OnUpgradeChefQuantity
+  m_Script: {fileID: 11500000, guid: 34610f516410c4149803308ba06b0368, type: 3}
+  m_Name: OnUpgradeStaffQuantity
   m_EditorClassIdentifier: 

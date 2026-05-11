@@ -10,12 +10,12 @@ namespace LabDiner.Restaurant.SO
     // Nhóm 2: Nâng cấp dành riêng cho nhân viên
     //- Tăng profit
     //- Giảm thời gian làm việc
-    [CreateAssetMenu(fileName = "New Staff Upgrade", menuName = "Game/Upgrades/Staff Upgrade")]
-    public class StaffUpgradeSO : BaseUpgradeSO 
+    [CreateAssetMenu(fileName = "New Staff Quantity Upgrade", menuName = "Game/Upgrades/Staff Quantity Upgrade")]
+    public class StaffQuantityUpgradeSO : BaseUpgradeSO 
     {
         [Header("Events")]
-        public StaffUpgradeEvent OnUpgradeRaised;
-        public List<TaskType> staffSkill;
+        public StaffQuantityUpgradeEvent OnUpgradeRaised;
+        public Staff staffPrefab;
 
         public override void ApplyUpgrade()
         {

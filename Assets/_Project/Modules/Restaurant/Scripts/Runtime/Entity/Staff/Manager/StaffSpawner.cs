@@ -14,66 +14,45 @@ namespace LabDiner.Restaurant.Manager
         [SerializeField] private LevelUpgradeEvent _onUpgradeAllStaffMoveSpeed;
 
         [Header("Base Settings")]
-        [SerializeField] protected LevelUpgradeEvent _onUpgradeQuantity;
-        [SerializeField] protected Staff _staffPrefab;
+        [SerializeField] protected StaffQuantityUpgradeEvent _onUpgradeStaffQuantity;
+        [SerializeField] protected List<Staff> _initialStaffs;
         [SerializeField] private Transform _spawnParent;
 
         [SerializeField] protected List<Transform> _restPositions;
-        [SerializeField] protected int _initialCount = 1;
         [SerializeField] protected bool _spawnInBox = true;
 
         [Header("[Runtime]")]
 
         [SerializeField] protected List<Staff> _spawnedStaffs = new List<Staff>();
 
-        void Start() => Spawn(_initialCount);
+        void Start()
+        {
+            foreach (Staff staffPrefab in _initialStaffs)
+            {
+                Staff staff = CreateInstance(staffPrefab);
+                staff.gameObject.SetActive(true);
+            }
+        }
 
         void OnEnable()
         {
-            _onUpgradeQuantity.Register(HandleUpgrade);
+            _onUpgradeStaffQuantity.Register(HandleUpgradeQUantity);
             _onUpgradeAllStaffMoveSpeed.Register(HandleUpgradeAllStaffMoveSpeed);
 
         }
         void OnDisable()
         {
-            _onUpgradeQuantity.Unregister(HandleUpgrade);
+            _onUpgradeStaffQuantity.Unregister(HandleUpgradeQUantity);
             _onUpgradeAllStaffMoveSpeed.Unregister(HandleUpgradeAllStaffMoveSpeed);
         }
 
-        private void HandleUpgrade(BaseUpgradeSO upgradeSO)
+        private void HandleUpgradeQUantity(StaffQuantityUpgradeSO upgradeSO)
         {
-            int amount = Mathf.RoundToInt(upgradeSO.UpgradeValue);
-            OnUpgradeReceived(amount);
-        }
-
-        protected Staff CreateInstance()
-        {
-            int index = _spawnedStaffs.Count;
-            Transform restPoint = _restPositions[index % _restPositions.Count];
-
-            if (index >= _restPositions.Count)
-                Debug.LogWarning($"Not enough rest positions for {typeof(Staff).Name}!");
-
-            Staff staff = Instantiate(_staffPrefab, restPoint.position, Quaternion.identity, _spawnParent);
-            staff.RestPosition = restPoint;
-            _spawnedStaffs.Add(staff);
-            return staff;
-        }
-
-        void Spawn(int quantity)
-        {
+            int quantity = Mathf.RoundToInt(upgradeSO.UpgradeValue);
+            
             for (int i = 0; i < quantity; i++)
             {
-                Staff staff = CreateInstance();
-                staff.gameObject.SetActive(true);
-            }
-        }
-
-        void OnUpgradeReceived(int quantity)
-        {
-            for (int i = 0; i < quantity; i++)
-            {
-                Staff staff = CreateInstance();
+                Staff staff = CreateInstance(upgradeSO.staffPrefab);
 
                 if (_spawnInBox)
                 {
@@ -86,6 +65,20 @@ namespace LabDiner.Restaurant.Manager
                     UnboxStaff(staff);
                 }
             }
+        }
+
+        protected Staff CreateInstance(Staff prefab)
+        {
+            int index = _spawnedStaffs.Count;
+            Transform restPoint = _restPositions[index % _restPositions.Count];
+
+            if (index >= _restPositions.Count)
+                Debug.LogWarning($"Not enough rest positions for {typeof(Staff).Name}!");
+
+            Staff staff = Instantiate(prefab, restPoint.position, Quaternion.identity, _spawnParent);
+            staff.RestPosition = restPoint;
+            _spawnedStaffs.Add(staff);
+            return staff;
         }
 
         public void UnboxStaff(Component staff)

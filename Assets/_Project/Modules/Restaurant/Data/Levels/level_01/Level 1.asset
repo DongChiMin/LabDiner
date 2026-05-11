@@ -15,7 +15,6 @@ MonoBehaviour:
   LevelIndex: 1
   LevelName: 
   AvailableUpgrades:
-  - {fileID: 11400000, guid: 064dbe78d1376444a84c8f5ae3bd5a1f, type: 2}
   - {fileID: 11400000, guid: 20ff4517c92c0a444832b6c225f299bc, type: 2}
   - {fileID: 11400000, guid: 20ff4517c92c0a444832b6c225f299bc, type: 2}
   - {fileID: 11400000, guid: 4b087ebbf9db3e74ea4b43dc27acf698, type: 2}
@@ -24,9 +23,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e9dd54bc9d3e0d242ac43c6b0cfb500c, type: 2}
   - {fileID: 11400000, guid: 50d136f6f947e8b42b725b77255cbccd, type: 2}
   - {fileID: 11400000, guid: 50d136f6f947e8b42b725b77255cbccd, type: 2}
+  - {fileID: 11400000, guid: 064dbe78d1376444a84c8f5ae3bd5a1f, type: 2}
+  - {fileID: 11400000, guid: 064dbe78d1376444a84c8f5ae3bd5a1f, type: 2}
   AvailableMissions:
   - {fileID: 11400000, guid: e967c9511b0683845a43d323a6ce6e6d, type: 2}
   FinalMission: {fileID: 11400000, guid: 7f08af7674856d44fa9c0e79e39a4986, type: 2}
+  WaitingLine: 0
   CoreStations: []
   MaxUniqueStations: 2
   MaxTotalQtyPerOrder: 5

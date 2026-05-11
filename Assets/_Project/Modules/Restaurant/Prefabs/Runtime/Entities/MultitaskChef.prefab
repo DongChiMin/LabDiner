@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8730692302361930692}
   - component: {fileID: 2333676677103525307}
   m_Layer: 0
-  m_Name: Staff
+  m_Name: MultitaskChef
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
