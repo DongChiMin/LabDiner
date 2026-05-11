@@ -13,8 +13,6 @@ namespace LabDiner.Restaurant.Environment
         public Transform WorkPos => _workPos;
 
         [Header("Settings")]
-        [SerializeField] private TaskRuntimeSO _taskRuntimeSO;
-        [SerializeField] private OrderEvent _onNewUnservedOrder;
         [SerializeField] private Transform _workPos;
 
         [Header("[Runtime]")]

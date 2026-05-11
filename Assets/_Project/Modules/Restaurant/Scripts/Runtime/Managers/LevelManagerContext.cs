@@ -8,8 +8,6 @@ namespace LabDiner.Restaurant.Manager
     public class LevelManagerContext : Singleton<LevelManagerContext>, ILevelInitializable
     {
         [Header("Objects")]
-        public ChefManager ChefManager;
-        public WaiterManager WiterManager;
         public GuestSpawner GuestSpawner;
 
         [Header("Places")]
@@ -17,9 +15,7 @@ namespace LabDiner.Restaurant.Manager
         [SerializeField] public CoreStationManager CoreStationManager;
 
         [Header("Logics")]
-        public ServeManager ServeManager;
         public LevelCurrencyManager LevelCurrencyManager;
-        public OrderManager OrderManager;
         public ReputationManager ReputationManager;
 
         [Header("[Optional]")]  //có thể null tùy level

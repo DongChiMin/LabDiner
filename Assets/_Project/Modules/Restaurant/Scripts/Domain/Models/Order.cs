@@ -7,7 +7,7 @@ using LabDiner.Restaurant.Interface;
 namespace LabDiner.Restaurant.Model
 {
     [System.Serializable]
-    public class Order : IStaffTask
+    public class Order
     {
         public Dictionary<CoreStation, int> OrderDict; // CoreStation là món ăn, int là số lượng
         public GuestContext OrderBy;
