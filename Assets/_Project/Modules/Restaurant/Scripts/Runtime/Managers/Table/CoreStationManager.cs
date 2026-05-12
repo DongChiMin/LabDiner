@@ -1,12 +1,13 @@
 using System.Collections.Generic;
 using LabDiner.Restaurant.Environment;
 using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Interface;
 using LabDiner.Restaurant.SO;
 using UnityEngine;
 
 namespace LabDiner.Restaurant.Manager
 {
-    public class CoreStationManager : MonoBehaviour
+    public class CoreStationManager : MonoBehaviour, ILevelInitializable
     {
         public List<CoreStation> CoreStations => coreStations;
 
@@ -16,28 +17,16 @@ namespace LabDiner.Restaurant.Manager
         [SerializeField] private DishUpgradeEvent _onDishProcessTimeUpgrade;
 
         [Header("Core Stations")]
-        [SerializeField] private List<CoreStation> coreStations = new List<CoreStation>();
         [SerializeField] private CoreStationRuntimeSO coreStationRuntimeSO;
 
-        void Awake()
-        {
-            coreStationRuntimeSO.Clear();
-            foreach(var station in coreStations)
-            {
-                coreStationRuntimeSO.AddCoreStation(station);
-            }
-        }
+        [Header("[Runtime]")]
+        [SerializeField] private List<CoreStation> coreStations;
 
         void OnEnable()
         {
             _onAllDishProfitUpgrade.Register(HandleAllDishProfitUpgrade);
             _onDishProfitUpgrade.Register(HandleDishProfitUpgrade);
             _onDishProcessTimeUpgrade.Register(HandleDishProcessTimeUpgrade);
-
-            for(int i = 0; i < coreStations.Count; i++)
-            {
-                coreStations[i].OnMaxLevel += HandleCoreStationMaxLevel;
-            }
         }
 
         void OnDisable()
@@ -45,19 +34,24 @@ namespace LabDiner.Restaurant.Manager
             _onAllDishProfitUpgrade.Unregister(HandleAllDishProfitUpgrade);
             _onDishProfitUpgrade.Unregister(HandleDishProfitUpgrade);
             _onDishProcessTimeUpgrade.Unregister(HandleDishProcessTimeUpgrade);
-
-            for(int i = 0; i < coreStations.Count; i++)
-            {
-                coreStations[i].OnMaxLevel -= HandleCoreStationMaxLevel;
-            }
         }
 
 
         #region API
 
-        public void OnInit(LevelConfigSO levelConfig)
+        public void Init(LevelConfigSO levelConfig)
         {
-            
+            //Xóa list cũ, tạo mới list, thêm các trạm chính vào list
+            coreStations.Clear();
+            coreStations = new List<CoreStation>(gameObject.GetComponentsInChildren<CoreStation>());
+
+            //Cập nhật vào RuntimeSO
+            coreStationRuntimeSO.Clear();
+            foreach(var station in coreStations)
+            {
+                coreStationRuntimeSO.AddCoreStation(station);
+                station.OnMaxLevel += HandleCoreStationMaxLevel;
+            }
         }
 
         /// <summary>

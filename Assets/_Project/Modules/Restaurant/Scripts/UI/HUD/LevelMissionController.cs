@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant.UI
 {
-    public class LevelMissionController : MonoBehaviour, ILevelInitializable
+    public partial class LevelMissionController : MonoBehaviour, ILevelInitializable
     {
         [Header("Events")]
         [SerializeField] private IntEvent _onLevelComplete;
@@ -21,7 +21,7 @@ namespace LabDiner.Restaurant.UI
         [SerializeField] private ToggleAttentionEffect _attentionEffect;
         [SerializeField] private Transform _rewardStartPos;
 
-        [Header("[DEBUG]")]
+        [Header("[Runtime]")]
         [SerializeField] private List<BaseGemMissionSO> _remainingMissions = new List<BaseGemMissionSO>();
         [SerializeField] BaseGemMissionSO _currentMission;
         [SerializeField] private BaseGemMissionSO _finalMission;
@@ -46,9 +46,7 @@ namespace LabDiner.Restaurant.UI
             //Khởi động nhiệm vụ đầu tiên
             ActivateNextMission();
 
-            #if UNITY_EDITOR
-            ValidateData();
-            #endif
+            Debug_ValidateData();
         }
 
         #region Private Methods
@@ -137,35 +135,6 @@ namespace LabDiner.Restaurant.UI
         }
         #endregion
 
-
-        #region EDITOR ONLY
-        #if UNITY_EDITOR
-        private void ValidateData()
-        {
-            List<CoreStation> coreStations = LevelManagerContext.Instance.CoreStationManager.CoreStations;
-
-            foreach(BaseGemMissionSO mission in _remainingMissions)
-            {
-                if (mission is CoreStationLevelMissionSO coreStationMission)
-                {
-                    CoreStationSO targetCoreStation = coreStationMission.TargetCoreStation;
-                    var targetStation = coreStations.FirstOrDefault(s => s.CoreStationSO == targetCoreStation);
-                    if(targetStation != null)
-                    {
-                        CoreStationSO stationSO = targetStation.CoreStationSO;
-                        if(coreStationMission.TargetValue > stationSO.MaxLevel)
-                        {
-                            Debug.LogError($"[LevelMissionController] Nhiệm vụ {mission.Title} yêu cầu level vượt quá level tối đa của coreStation ({stationSO.MaxLevel}), vui lòng điều chỉnh lại hoặc nâng cấp trạm chính này trong data để tránh lỗi khi chạy game!");
-                        }
-                    }
-                    else
-                    {
-                        Debug.LogError($"[LevelMissionController] Không tìm thấy trạm chính nào phù hợp với yêu cầu của nhiệm vụ {mission.Title}, vui lòng điều chỉnh lại data của nhiệm vụ này để tránh lỗi khi chạy game!");
-                    }
-                }
-            }
-        }
-        #endif
-        #endregion
+        private partial void Debug_ValidateData();
     }
 }

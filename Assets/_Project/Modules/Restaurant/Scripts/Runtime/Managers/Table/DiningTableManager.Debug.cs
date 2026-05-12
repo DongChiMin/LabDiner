@@ -26,8 +26,9 @@ namespace LabDiner.Restaurant.Manager
             }
         }
 
-        private void Debug_ValidateData()
+        private void Debug_ValidateData(LevelConfigSO config)
         {
+            _levelConfig = config;
             int totalSeat = 0;
             foreach(DiningTable table in _tables)
             {

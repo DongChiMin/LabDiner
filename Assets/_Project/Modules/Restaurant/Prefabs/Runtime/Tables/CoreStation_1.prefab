@@ -1341,8 +1341,6 @@ MonoBehaviour:
   _stationSpawner: {fileID: 8997222582616412512}
   _upgradeSprite: {fileID: 8951396474685308219}
   gemRewardStartPos: {fileID: 4774221773711618420}
-  _onCoinSpent: {fileID: 11400000, guid: 98392154598053a4ea4074b11efad5e1, type: 2}
-  _onCoinUpdated: {fileID: 11400000, guid: 30c103eea11c968448494f5baffcb7bd, type: 2}
   _onCoreStationLevelUpgraded: {fileID: 11400000, guid: be47ba628b016974d812d59b46253c49, type: 2}
   _coreStationSO: {fileID: 11400000, guid: 71de0ce8923041146bf74047af20e4dd, type: 2}
   _coinRuntimeData: {fileID: 11400000, guid: dfffcaeb65047244ba51b6f65e6fbaf8, type: 2}
@@ -1375,7 +1373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8c56d2547b2c7a4b811a32fa2810acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _onCoinUpdated: {fileID: 11400000, guid: 30c103eea11c968448494f5baffcb7bd, type: 2}
+  _coinData: {fileID: 11400000, guid: dfffcaeb65047244ba51b6f65e6fbaf8, type: 2}
   _CoreStationUI: {fileID: 8876292540237515629}
   _CoreStationStarUI: {fileID: 3646192564905348718}
   _CoreStationUnlockUI: {fileID: 2438902301815182972}

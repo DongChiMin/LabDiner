@@ -12,6 +12,7 @@ namespace LabDiner.Restaurant.SO
     public class CoreStationRuntimeSO : ScriptableObject
     {
         // Danh sách CoreStation có trên level, được quản lý bởi CoreStationManager
+        public List<CoreStation> CoreStations => coreStations;
         [SerializeField] private List<CoreStation> coreStations = new List<CoreStation>();
 
         public bool HasAnyUnlockedStation()
@@ -25,6 +26,11 @@ namespace LabDiner.Restaurant.SO
             {
                 coreStations.Add(coreStation);
             }
+        }
+        public int GetCoreStationLevel(CoreStationSO coreStationSO)
+        {
+            var station = coreStations.Find(s => s.CoreStationSO == coreStationSO);
+            return station != null ? station.CurrentLevel : 0;
         }
 
         public void Clear() => coreStations.Clear();

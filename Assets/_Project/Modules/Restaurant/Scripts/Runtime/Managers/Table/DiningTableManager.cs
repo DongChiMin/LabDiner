@@ -17,6 +17,8 @@ namespace LabDiner.Restaurant.Manager
 
         [Header("References")]
         [SerializeField] private DiningSeatRuntimeSetSO _diningSeatRuntimeSet;
+
+        [Header("[Runtime]")]
         [SerializeField] private List<DiningTable> _tables = new List<DiningTable>();
 
         void OnEnable()
@@ -31,19 +33,20 @@ namespace LabDiner.Restaurant.Manager
             _onGuestQuantityChanged.Unregister(HandleGuestQuantityChanged);
         }
 
-        void Awake()
+        public void Init(LevelConfigSO config)
         {
+            //Xóa list cũ, tạo mới list, thêm các bàn ăn vào list
+            _tables.Clear();
+            _tables = new List<DiningTable>(gameObject.GetComponentsInChildren<DiningTable>());
+
+            //Xóa runtime set, thêm các ghế ăn vào runtime set
             _diningSeatRuntimeSet.Clear();
             foreach(DiningTable table in _tables)
             {
                 table.gameObject.SetActive(false);
             }
-        }
 
-        public void Init(LevelConfigSO config)
-        {
-            _levelConfig = config;
-            Debug_ValidateData();
+            Debug_ValidateData(config);
         }
 
 

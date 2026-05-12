@@ -13,12 +13,13 @@ namespace LabDiner.Restaurant.SO
     {
         [Header("Target")]
         public CoreStationSO TargetCoreStation;
+        public CoreStationRuntimeSO coreStationRuntimeSO;
 
         public override float GetCurrentValue()
         {
-            var station = LevelManagerContext.Instance.CoreStationManager.CoreStations
-            .FirstOrDefault(s => s.CoreStationSO == TargetCoreStation);
-            return station != null ? station.CurrentLevel : 0;
+            //Lấy level hiện tại của core station tương ứng từ CoreStationRuntimeSO
+            int currentLevel = coreStationRuntimeSO.GetCoreStationLevel(TargetCoreStation);
+            return currentLevel;
         }
     }
 }

@@ -53,7 +53,7 @@ namespace LabDiner.Restaurant.Manager
         {
             // mỗi 5 giây thử spawn 1 lần
             StartCoroutine(SpawnLoop());
-            _onGuestQuantityChanged.Raise(_currentMaxGuests);
+            // _onGuestQuantityChanged.Raise(_currentMaxGuests);
         }
 
         public void Init(LevelConfigSO levelConfigSO)
