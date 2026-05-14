@@ -27,8 +27,13 @@ namespace LabDiner.Shared.UI
                     }).SetLink(gameObject);
         }
 
+        //isHiding flag để tránh trường hợp gọi Hide nhiều lần liên tiếp
+        private bool _isHiding = false;
         public override void Hide(Action onComplete = null)
         {
+            if (_isHiding) return;
+            _isHiding = true;
+
             transform.DOKill();
 
             transform.DOScale(Vector3.zero, _duration)
@@ -36,6 +41,7 @@ namespace LabDiner.Shared.UI
                      .SetUpdate(true)
                      .OnComplete(() =>
                      {
+                        _isHiding = false;
                          onComplete?.Invoke();
                      }).SetLink(gameObject);
         }

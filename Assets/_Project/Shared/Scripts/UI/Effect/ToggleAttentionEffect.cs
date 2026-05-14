@@ -40,10 +40,10 @@ namespace LabDiner.Shared.UI
             _mainSequence = DOTween.Sequence();
 
             // 1. Phóng to
-            _mainSequence.Append(transform.DOScale(_originalScale * _scaleMultiplier, _duration).SetEase(_easeType));
+            _mainSequence.Append(transform.DOScale(_originalScale * _scaleMultiplier, _duration).SetEase(_easeType).SetLink(gameObject));
             
             // 2. Thu nhỏ về trạng thái ban đầu
-            _mainSequence.Append(transform.DOScale(_originalScale, _duration * 0.8f).SetEase(Ease.InQuad));
+            _mainSequence.Append(transform.DOScale(_originalScale, _duration * 0.8f).SetEase(Ease.InQuad).SetLink(gameObject));
 
             // 3. NGHỈ (Interval) - Đây là điểm mấu chốt cậu cần
             _mainSequence.AppendInterval(_pauseDuration);

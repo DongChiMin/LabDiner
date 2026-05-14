@@ -36,12 +36,12 @@ namespace LabDiner.Shared.UI
             _mainSequence = DOTween.Sequence();
             _mainSequence.SetId("Attention_" + gameObject.GetInstanceID());
 
-            _mainSequence.Append(transform.DOScale(_scaleStrength, _animationDuration * 0.3f).SetEase(Ease.OutBack));
+            _mainSequence.Append(transform.DOScale(_scaleStrength, _animationDuration * 0.3f).SetEase(Ease.OutBack).SetLink(gameObject));
             
             _mainSequence.Append(transform.DOShakeRotation(_animationDuration * 0.7f, 
                 new Vector3(0, 0, _rotateAngle), 10, 90, false));
 
-            _mainSequence.Append(transform.DOScale(1f, _animationDuration * 0.3f).SetEase(Ease.InQuad));
+            _mainSequence.Append(transform.DOScale(1f, _animationDuration * 0.3f).SetEase(Ease.InQuad).SetLink(gameObject));
 
             _mainSequence.AppendInterval(_pauseDuration);
 

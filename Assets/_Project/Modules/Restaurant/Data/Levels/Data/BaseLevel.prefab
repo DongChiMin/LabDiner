@@ -1767,6 +1767,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Spawner_Staff
       objectReference: {fileID: 0}
+    - target: {fileID: 7725189240280600735, guid: da35bee9d41f92d44803847721f23284, type: 3}
+      propertyPath: _initialStaffs.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7725189240280600735, guid: da35bee9d41f92d44803847721f23284, type: 3}
+      propertyPath: '_initialStaffs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3054657543311258127, guid: ec12fb9c391ef4947ab78fce0c04351c, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1828,6 +1836,14 @@ PrefabInstance:
     - target: {fileID: 4543177432826267450, guid: 2d75119cc3ee5354fb2947d1d9c6df6b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026243372932724047, guid: 2d75119cc3ee5354fb2947d1d9c6df6b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5026243372932724047, guid: 2d75119cc3ee5354fb2947d1d9c6df6b, type: 3}
+      propertyPath: m_SortingOrder
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
