@@ -19,3 +19,4 @@ MonoBehaviour:
   RewardValue: 50
   OnGemFlyAdded: {fileID: 11400000, guid: 7544e3ce532a74a448d1f45265ea3c60, type: 2}
   MissionType: 0
+  _coreStationRuntimeSO: {fileID: 11400000, guid: 014d0306fd640c34d825b497c1c9b9f8, type: 2}

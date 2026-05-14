@@ -8,11 +8,11 @@ namespace LabDiner.Restaurant.Manager
     public class LevelManagerContext : Singleton<LevelManagerContext>, ILevelInitializable
     {
         [Header("Objects")]
-        public GuestSpawner GuestSpawner;
+        [SerializeField] private GuestSpawner GuestSpawner;
 
         [Header("Places")]
         [SerializeField] private DiningTableManager DiningTableManager;
-        [SerializeField] public CoreStationManager CoreStationManager;
+        [SerializeField] private CoreStationManager CoreStationManager;
 
         [Header("Logics")]
         // public LevelCurrencyManager LevelCurrencyManager;
@@ -27,6 +27,7 @@ namespace LabDiner.Restaurant.Manager
 
         public void Init(LevelConfigSO config)
         {
+            CoreStationManager.Init(config);
             GuestSpawner.Init(config);
             DiningTableManager.Init(config);
         }

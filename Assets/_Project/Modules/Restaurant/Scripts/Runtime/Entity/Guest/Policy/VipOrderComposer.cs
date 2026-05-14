@@ -5,6 +5,7 @@ using LabDiner.Restaurant.Model;
 using LabDiner.Restaurant.Environment;
 using LabDiner.Restaurant.Interface;
 using UnityEngine;
+using LabDiner.Restaurant.SO;
 
 namespace LabDiner.Restaurant.Runtime
 {
@@ -14,11 +15,13 @@ namespace LabDiner.Restaurant.Runtime
     public class VipOrderComposer : IOrderComposer
     {
         readonly int _quantityMultiplier;
+        private CoreStationRuntimeSO _coreStationRuntimeSO;
         
         //Hàm khởi tạo
-        public VipOrderComposer(int quantityMultiplier)
+        public VipOrderComposer(int quantityMultiplier, CoreStationRuntimeSO coreStationRuntimeSO)
         {
             _quantityMultiplier = quantityMultiplier;
+            _coreStationRuntimeSO = coreStationRuntimeSO;
         }
 
         // Tạo order với nhiều món và số lượng lớn
@@ -26,7 +29,7 @@ namespace LabDiner.Restaurant.Runtime
         {
             int quantity = Random.Range(1, maxTotalQty + 1) * _quantityMultiplier;
             Dictionary<CoreStation, int> orderDict =
-                LevelManagerContext.Instance.CoreStationManager.GenerateRandomOrder(maxUniqueStations, quantity);
+                _coreStationRuntimeSO.GenerateRandomOrder(maxUniqueStations, quantity);
 
             return new Order(orderDict, guest, 0, false);
         }

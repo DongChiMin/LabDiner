@@ -11,10 +11,16 @@ namespace LabDiner.Restaurant.Environment
         [Header("Base Settings")]
         [SerializeField] private Station _stationPrefab;
         [SerializeField] private List<StationPosition> _stationPos;
+        [SerializeField] private Transform _stationPosParent;
         [SerializeField] private Transform _spawnParent;
         [SerializeField] protected bool _spawnInBox = true;
 
         protected List<Station> _spawnedStations = new List<Station>();
+
+        void Awake()
+        {
+            _stationPos = new List<StationPosition>(_stationPosParent.GetComponentsInChildren<StationPosition>());
+        }
 
         void Start()
         {
@@ -65,26 +71,6 @@ namespace LabDiner.Restaurant.Environment
         }
 
         #endregion
-
-
-        void OnDrawGizmos()
-        {
-            foreach(StationPosition stationPos in _stationPos)
-            {
-                if( stationPos.spawnPos == null || stationPos.workPos == null)
-                {
-                    continue;
-                }
-                
-                Gizmos.color = Color.green;
-                Gizmos.DrawWireCube(stationPos.spawnPos.position, Vector3.one * 1.5f);
-            
-                Gizmos.color = Color.yellow;
-                Vector3 pos = stationPos.workPos.position;
-                    Vector3 center = pos + Vector3.up * 0.5f;
-                    Gizmos.DrawWireCube(center, new Vector3(0.6f, 1.2f, 0.1f));
-            }
-        }
 
         #region EDITOR ONLY
         #if UNITY_EDITOR

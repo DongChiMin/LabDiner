@@ -12,8 +12,6 @@ namespace LabDiner.LevelSystem.Domain
         public Vector3 rotation;
         public string parentGroup;  // Nhóm phân cấp (ví dụ: "Stations", "Decor")
 
-        public List<LevelObjectData> subObjects;
-
         // --- Object này thuộc tính năng nào? ---
         // Nếu để None, nó sẽ luôn luôn được sinh ra (Core gameplay).
         public LevelFeature requiredFeature = LevelFeature.None;

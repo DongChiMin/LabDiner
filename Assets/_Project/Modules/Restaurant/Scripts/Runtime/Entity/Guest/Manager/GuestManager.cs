@@ -11,13 +11,22 @@ namespace LabDiner.Restaurant.Runtime
 {
     public class GuestManager : MonoBehaviour, ILevelInitializable
     {
+        [Header("Objects")]
+        [SerializeField] private GuestSpawner _guestSpawner;
+
         [Header("References")]
         [SerializeField] private DiningSeatRuntimeSetSO _diningSeatRuntimeSet;
+        [SerializeField] private CoreStationRuntimeSO _coreStationRuntimeSO;
+
         [Header("Policy (Optional)")]
         [SerializeField] private MonoBehaviour OrderComposerBehaviour;
         IOrderComposer OrderComposer => OrderComposerBehaviour as IOrderComposer;
-        private DefaultOrderComposer _defaultOrderComposer = new DefaultOrderComposer();
+        private DefaultOrderComposer _defaultOrderComposer;
         private bool _hasWaitingLine;
+        private void Awake()
+        {
+            _defaultOrderComposer = new DefaultOrderComposer(_coreStationRuntimeSO);
+        }
 
         #region API
         public void Init(LevelConfigSO config)
@@ -62,7 +71,7 @@ namespace LabDiner.Restaurant.Runtime
             }
 
             // 4) fallback: nếu không có seat và không có waiting line -> loại bỏ guest
-            LevelManagerContext.Instance.GuestSpawner.RemoveGuest(guest);
+            _guestSpawner.RemoveGuest(guest);
         }
         #endregion
     }

@@ -49,17 +49,13 @@ namespace LabDiner.Restaurant.Manager
             _onUpgradeGuestQuantity.Unregister(HandleUpgradeGuestQuantity);
         }
 
-        void Start()
-        {
-            // mỗi 5 giây thử spawn 1 lần
-            StartCoroutine(SpawnLoop());
-            // _onGuestQuantityChanged.Raise(_currentMaxGuests);
-        }
-
         public void Init(LevelConfigSO levelConfigSO)
         {
             _maxUniqueStations = levelConfigSO.MaxUniqueStations;
             _maxTotalQty = levelConfigSO.MaxTotalQtyPerOrder;
+
+            StartCoroutine(SpawnLoop());
+            _onGuestQuantityChanged.Raise(_currentMaxGuests);
         }
 
         public GuestContext SpawnGuest()

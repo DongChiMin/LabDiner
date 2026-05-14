@@ -25,3 +25,11 @@ MonoBehaviour:
     prefab: {fileID: 5528400446280263707, guid: 8dcb918050ca6c8469fca3bf46922f12, type: 3}
   - prefabID: manager_corestation
     prefab: {fileID: 8907927653456072843, guid: b9c088753911d3c4a85cb995e5eb7d9b, type: 3}
+  - prefabID: diningtable
+    prefab: {fileID: 2274710442433186964, guid: 2d75119cc3ee5354fb2947d1d9c6df6b, type: 3}
+  - prefabID: diningseat
+    prefab: {fileID: 3906446568473829134, guid: b2daa3c3a6847b04ca23b94c39f7fad8, type: 3}
+  - prefabID: passtable
+    prefab: {fileID: 7581856885116838756, guid: 84f08c266b576994e89c694ea95b5cfe, type: 3}
+  - prefabID: none
+    prefab: {fileID: 0}

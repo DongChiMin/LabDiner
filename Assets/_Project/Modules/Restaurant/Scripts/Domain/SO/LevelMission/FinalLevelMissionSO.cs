@@ -21,9 +21,10 @@ namespace LabDiner.Restaurant.SO
     {
         [Header("Target")]
         public FinalMissionType MissionType;
+        [SerializeField] private CoreStationRuntimeSO _coreStationRuntimeSO;
         public override float GetCurrentValue()
         {
-            List<CoreStation> coreStations = LevelManagerContext.Instance.CoreStationManager.CoreStations;
+            List<CoreStation> coreStations = _coreStationRuntimeSO.CoreStations;
 
             int totalCoreStationCurrentLevel = coreStations.Sum(s => s.CurrentLevel);
             int totalCoreStationMaxLevel = coreStations.Sum(s => s.CoreStationSO.LevelPerStar * s.CoreStationSO.StationStars.Count);

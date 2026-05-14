@@ -17,51 +17,98 @@ MonoBehaviour:
     objects:
     - instanceID: Objects
       prefabID: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
+      position:
+        x: 0
+        y: 0
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      scale:
+        x: 0
+        y: 0
+        z: 0
       parentGroup: 
-      subObjects:
-      - instanceID: 
-        prefabID: 
-        position: {x: 0, y: 0, z: 0}
-        rotation: {x: 0, y: 0, z: 0}
-        parentGroup: 
-        subObjects: []
-        requiredFeature: 0
       requiredFeature: 0
     - instanceID: Places
       prefabID: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
+      position:
+        x: 0
+        y: 0
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      scale:
+        x: 0
+        y: 0
+        z: 0
       parentGroup: 
-      subObjects: []
       requiredFeature: 0
     - instanceID: Manager_DiningTable
       prefabID: manager_diningtable
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
+      position:
+        x: 0
+        y: 0
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      scale:
+        x: 0
+        y: 0
+        z: 0
       parentGroup: Places
-      subObjects: []
       requiredFeature: 0
     - instanceID: DiningTable
       prefabID: diningtable
-      position: {x: 0, y: 2.5, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
+      position:
+        x: 0
+        y: 2.5
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      scale:
+        x: 0
+        y: 0
+        z: 0
       parentGroup: Manager_DiningTable
-      subObjects: []
       requiredFeature: 0
     - instanceID: Manager_CoreStation
       prefabID: manager_corestation
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
+      position:
+        x: 0
+        y: 0
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      scale:
+        x: 0
+        y: 0
+        z: 0
       parentGroup: Places
-      subObjects: []
       requiredFeature: 0
     - instanceID: CoreStation_Apple
       prefabID: corestation
-      position: {x: -5, y: -3.5, z: 0}
-      rotation: {x: 0, y: 0, z: 0}
+      position:
+        x: -5
+        y: -3.5
+        z: 0
+      rotation:
+        x: 0
+        y: 0
+        z: 0
+      scale:
+        x: 0
+        y: 0
+        z: 0
       parentGroup: Manager_CoreStation
-      subObjects: []
       requiredFeature: 0
     enabledFeatures: 0500000006000000
