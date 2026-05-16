@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using LabDiner.Restaurant.Event;
+using LabDiner.Restaurant.Workflow;
 using UnityEngine;
 
 namespace LabDiner.Restaurant.SO
@@ -19,6 +20,7 @@ namespace LabDiner.Restaurant.SO
 
         [Header("Feature Settings")]
         public bool WaitingLine;
+        public List<Staff> InitialStaffs;
         
         [Header("Core Station Settings")]
         public List<CoreStationSO> CoreStations;   // Danh sách các trạm chính có trong level, dùng để tính toán tiến độ level dựa trên level max của các trạm chính này

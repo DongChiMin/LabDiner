@@ -1,3 +1,4 @@
+using LabDiner.Restaurant.Event;
 using LabDiner.Restaurant.Interface;
 using LabDiner.Restaurant.SO;
 using LabDiner.Shared.DesignPattern;
@@ -9,6 +10,9 @@ namespace LabDiner.Restaurant
 {
     public class CameraController : Singleton<CameraController>, ILevelInitializable
     {
+        [Header("Events")]
+        [SerializeField] private LevelConfigEvent _onLevelInit;
+
         [Header("Settings")]
         [SerializeField] private float _dragSensitivity = 0.01f;
         [SerializeField] private float _smoothSpeed = 10f;
@@ -38,6 +42,8 @@ namespace LabDiner.Restaurant
             InputReader.OnDrag += HandleDrag;
             InputReader.OnPointerUp += HandlePointerUp;
             UIManager.OnUIStateChanged += SetLock;
+
+            _onLevelInit.Register(Init);
         }
 
         private void OnDisable()
@@ -47,6 +53,8 @@ namespace LabDiner.Restaurant
             InputReader.OnDrag -= HandleDrag;
             InputReader.OnPointerUp -= HandlePointerUp;
             UIManager.OnUIStateChanged -= SetLock;
+
+            _onLevelInit.Unregister(Init);
         }
 
         private void SetLock(bool isLocked)

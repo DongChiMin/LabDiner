@@ -29,6 +29,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e967c9511b0683845a43d323a6ce6e6d, type: 2}
   FinalMission: {fileID: 11400000, guid: 7f08af7674856d44fa9c0e79e39a4986, type: 2}
   WaitingLine: 0
+  InitialStaffs:
+  - {fileID: 3054657543311258127, guid: ec12fb9c391ef4947ab78fce0c04351c, type: 3}
   CoreStations: []
   MaxUniqueStations: 2
   MaxTotalQtyPerOrder: 5

@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace LabDiner.Restaurant.Manager
 {
-    public partial class StaffSpawner : MonoBehaviour, IStaffUnboxer
+    public partial class StaffSpawner : MonoBehaviour, IStaffUnboxer, ILevelInitializable
     {
         [Header("Events")]
         [SerializeField] private LevelUpgradeEvent _onUpgradeAllStaffMoveSpeed;
@@ -25,15 +25,6 @@ namespace LabDiner.Restaurant.Manager
 
         [SerializeField] protected List<Staff> _spawnedStaffs = new List<Staff>();
 
-        void Start()
-        {
-            foreach (Staff staffPrefab in _initialStaffs)
-            {
-                Staff staff = CreateInstance(staffPrefab);
-                staff.gameObject.SetActive(true);
-            }
-        }
-
         void OnEnable()
         {
             _onUpgradeStaffQuantity.Register(HandleUpgradeQUantity);
@@ -44,6 +35,16 @@ namespace LabDiner.Restaurant.Manager
         {
             _onUpgradeStaffQuantity.Unregister(HandleUpgradeQUantity);
             _onUpgradeAllStaffMoveSpeed.Unregister(HandleUpgradeAllStaffMoveSpeed);
+        }
+
+        public void Init(LevelConfigSO config)
+        {
+            _initialStaffs = config.InitialStaffs;
+            foreach (Staff staffPrefab in _initialStaffs)
+            {
+                Staff staff = CreateInstance(staffPrefab);
+                staff.gameObject.SetActive(true);
+            }   
         }
 
         private void HandleUpgradeQUantity(StaffQuantityUpgradeSO upgradeSO)
@@ -96,7 +97,5 @@ namespace LabDiner.Restaurant.Manager
                 staff.UpgradeMoveSpeed(upgradeSO.UpgradeValue);
             }
         }
-
-        
     }
 }
