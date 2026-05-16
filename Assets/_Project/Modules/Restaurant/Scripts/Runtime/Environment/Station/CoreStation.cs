@@ -22,7 +22,7 @@ namespace LabDiner.Restaurant.Environment
         public float RawProcessTime => _currentProcessTime / (1 + _currentProcessTimeBuff);
         public List<Station> Stations => _stations;
         public string Name => _name;
-        public Sprite DishIcon => _dishIcon;
+        public Sprite DishIcon => _coreStationSO.Dish.DishIcon;
         public double CurrentProfit => _currentProfit;
         public bool IsMaxLevel => _currentLevel >= _maxStar * _levelPerStar;
 
@@ -43,8 +43,6 @@ namespace LabDiner.Restaurant.Environment
 
         [Header("[DEBUG] Static Attributes")]
         [SerializeField] private string _name = "New CoreStation";
-        [SerializeField] private Sprite _dishIcon;
-        [SerializeField] private Sprite _stationIcon;
         [SerializeField] private int _maxStar = 5;
         [SerializeField] private int _levelPerStar = 2;
 
@@ -197,9 +195,7 @@ namespace LabDiner.Restaurant.Environment
             CoreStationUIData data = new CoreStationUIData()
             {
                 CurrentLevel = _currentLevel,
-                Name = _name,
-                StationIcon = _stationIcon,
-                
+                CoreStationSO = _coreStationSO,
 
                 StarQuantity = _currentStar,
                 MaxStar = _maxStar, 
@@ -245,9 +241,7 @@ namespace LabDiner.Restaurant.Environment
                 return;
             }
 
-            _name = _coreStationSO.Dish.name;
-            _dishIcon = _coreStationSO.Dish.Dishicon;
-            _stationIcon = _coreStationSO.Dish.StationIcon;
+            _name = _coreStationSO.Dish.Name;
             _maxStar = _coreStationSO.StationStars.Count;
             _levelPerStar = _coreStationSO.LevelPerStar;
 
@@ -343,7 +337,11 @@ namespace LabDiner.Restaurant.Environment
                 // Cập nhật lại biến tạm để không chạy lại lần sau
                 _lastCoreStationSO = _coreStationSO;
             }
-            OnDataChanged?.Invoke();
+            CoreStationFetchVisual fetchVisual = GetComponent<CoreStationFetchVisual>();
+            if (fetchVisual != null)
+            {
+                fetchVisual.FetchVisual(GetUIData());
+            }
         }
 
         void ValidateData()

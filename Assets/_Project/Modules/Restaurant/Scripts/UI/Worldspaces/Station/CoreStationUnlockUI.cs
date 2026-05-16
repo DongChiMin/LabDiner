@@ -54,9 +54,13 @@ namespace LabDiner.Restaurant.UI
         {
             _currentCost = data.CurrentCost;
 
-            _nameText.text = data.Name;
+            _nameText.text = data.CoreStationSO.Dish.Name;
             _costText.text = $"${data.CurrentCost:F0}";
-            _iconImage.sprite = data.StationIcon;
+
+            if(_iconImage.sprite != data.CoreStationSO.Dish.StationIcon)
+            {
+                _iconImage.sprite = data.CoreStationSO.Dish.StationIcon;
+            }
 
             ToggleUpgradeButton(data.CanUpgrade);
         }

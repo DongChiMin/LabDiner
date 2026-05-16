@@ -7,7 +7,7 @@ namespace LabDiner.Restaurant.SO
     {
         public string Id => name; // Sử dụng tên của ScriptableObject làm ID
         public string Name;
-        public Sprite Dishicon;
+        public Sprite DishIcon;
         public Sprite StationIcon;
     }
 }

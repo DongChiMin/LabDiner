@@ -148,7 +148,7 @@ public class StationCreatorWindow : EditorWindow
         // 1. DishSO
         DishSO newDish = ScriptableObject.CreateInstance<DishSO>();
         newDish.Name = dishName;
-        newDish.Dishicon = dishIcon;
+        newDish.DishIcon = dishIcon;
         newDish.StationIcon = stationIcon;
         string dishPath = AssetDatabase.GenerateUniqueAssetPath($"{DISH_FOLDER}/Dish_{dishName.Replace(" ", "")}.asset");
         AssetDatabase.CreateAsset(newDish, dishPath);

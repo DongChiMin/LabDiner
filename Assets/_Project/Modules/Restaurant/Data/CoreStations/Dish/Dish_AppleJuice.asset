@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Dish_AppleJuice
   m_EditorClassIdentifier: 
   Name: Apple Juice
-  Dishicon: {fileID: 3246793097361146182, guid: f9b476ed6896fc34496c6b6cd4a32757, type: 3}
+  DishIcon: {fileID: 3246793097361146182, guid: f9b476ed6896fc34496c6b6cd4a32757, type: 3}
   StationIcon: {fileID: -8414445453311855943, guid: e4f6a7f501bd1a64e8f2e5918fc2a777, type: 3}

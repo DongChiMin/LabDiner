@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using LabDiner.Restaurant.SO;
 using LabDiner.Shared.Extension;
 using LabDiner.Shared.Input;
 using LabDiner.Shared.UI;
@@ -10,9 +11,8 @@ namespace LabDiner.Restaurant.UI
 {
     public struct CoreStationUIData
     {
+        public CoreStationSO CoreStationSO;
         public int CurrentLevel;
-        public string Name;
-        public Sprite StationIcon;
 
         public int StarQuantity;
         public int MaxStar;
@@ -82,7 +82,7 @@ namespace LabDiner.Restaurant.UI
 
             _currentCost = data.CurrentCost;
 
-            _nameText.text = data.Name;
+            _nameText.text = data.CoreStationSO.Dish.Name;
             _levelText.text = $"Lvl {data.CurrentLevel}";
             _profitText.text = formattedProfit;
             _processTimeText.text = $"{data.CurrentProcessTime:F1}";
