@@ -12,7 +12,10 @@ namespace LabDiner.Restaurant
 
         public void Init(LevelConfigSO config)
         {
+            Debug.unityLogger.logEnabled = false;
+            Physics2D.SyncTransforms();
             _navMeshSurface.BuildNavMesh();
+            Debug.unityLogger.logEnabled = true;
 
             foreach(Transform child in transform)
             {
