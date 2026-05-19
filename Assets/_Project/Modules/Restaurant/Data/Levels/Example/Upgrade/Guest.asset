@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d96dea47aec7634286554d9d8e08ca3, type: 3}
-  m_Name: 1_4
+  m_Script: {fileID: 11500000, guid: 78bd421c7ac59f7459a0ce4dd13f523a, type: 3}
+  m_Name: Guest
   m_EditorClassIdentifier: 
-  Title: Harvest Seasons
-  Description: x2 Profit from Apple
+  Title: Invite Friends
+  Description: Customer Spawn faster
   Icon: {fileID: 0}
   UpgradeTypeSprite: {fileID: 0}
-  UpgradeCost: 3000
+  UpgradeCost: 1000
   UpgradeValue: 1
-  OnUpgradeRaised: {fileID: 11400000, guid: 3d0d7d492590bf040ae4badd8ecbeb2d, type: 2}
+  OnUpgradeRaised: {fileID: 11400000, guid: 27a6a35ae2a54ce489278fe22e512cf6, type: 2}
   UpgradeType: 1
-  TargetDish: {fileID: 11400000, guid: 5fb6c1ff8a5604143820488853beb000, type: 2}

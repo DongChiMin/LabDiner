@@ -19,6 +19,36 @@ namespace LabDiner.Restaurant.Manager
         {
             _guests.Remove(guest);
         }
+
+        [Header("[DEBUG]")]
+        [SerializeField] private bool _showGizmos = true;
+        [SerializeField] private Color _gizmoSpawnColor = Color.green;
+        [SerializeField] private Color _gizmosExitColor = Color.red;
+        [SerializeField] private float _workGizmoCenterY = 0f;
+        [SerializeField] private Vector3 _restPointDimensions = new Vector3(0.6f, 1.2f, 0.1f); // Hình vuông cao cao
+
+        protected virtual void OnDrawGizmos()
+        {
+            if (!_showGizmos || _spawnPoint == null) return;
+
+            Gizmos.color = _gizmoSpawnColor;
+
+            Vector3 pos = _spawnPoint.position;
+            Vector3 center = pos + Vector3.up * _workGizmoCenterY; ;
+            Gizmos.DrawWireCube(center, _restPointDimensions);
+
+            UnityEditor.Handles.Label(pos + Vector3.up * (_restPointDimensions.y + 0.2f), $"Guest Spawn Point");
+
+            Gizmos.color = _gizmosExitColor;
+
+            pos = _exitPoint.position;
+
+            center = pos + Vector3.up * _workGizmoCenterY; ;
+            Gizmos.DrawWireCube(center, _restPointDimensions);
+
+            UnityEditor.Handles.Label(pos + Vector3.up * (_restPointDimensions.y + 0.2f), $"Guest Exit Point");
+        }
+
     }
 }
 #endif
