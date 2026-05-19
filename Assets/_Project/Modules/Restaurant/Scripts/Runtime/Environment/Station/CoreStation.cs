@@ -230,10 +230,17 @@ namespace LabDiner.Restaurant.Environment
             OnDataChanged?.Invoke();
         }
 
+        public void SetData(CoreStationSO coreStationSO)
+        {
+            _coreStationSO = coreStationSO;
+            Initialize();
+            OnDataChanged?.Invoke();
+        }
+
         #endregion
 
         #region Private Methods 
-        private void Initialize()
+        public void Initialize()
         {
             if(_coreStationSO == null)
             {
