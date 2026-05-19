@@ -70,7 +70,7 @@ namespace LabDiner.Restaurant.UI
                 _missionHUD.ToggleProgressText(true);
             }
 
-            //Nếu là nhiệm vụ cuối cùng
+            //Sau khi ở trên đã pop, check Nếu là nhiệm vụ cuối cùng
             if(_remainingMissions.Count == 0)
             {
                 _missionHUD.ToggleProgressText(false);

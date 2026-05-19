@@ -50,7 +50,6 @@ namespace LabDiner.Restaurant.Manager
 
         public void Init(LevelConfigSO levelConfig)
         {
-            List<CoreStationSO> coreStationSOs = levelConfig.CoreStations;
         }
 
         /// <summary>

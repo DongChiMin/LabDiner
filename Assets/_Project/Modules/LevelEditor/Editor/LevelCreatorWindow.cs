@@ -130,7 +130,6 @@ public class LevelCreatorWindow : EditorWindow
         config.LevelName = levelDisplayName;
         config.AvailableUpgrades = new List<BaseUpgradeSO>(upgrades);
         config.AvailableMissions = new List<BaseMissionSO>(missions);
-        config.CoreStations = new List<CoreStationSO>(coreStations);
         config.WaitingLine = waitingLine;
         config.MaxUniqueStations = maxUniqueStations;
         config.MaxTotalQtyPerOrder = maxTotalQtyPerOrder;

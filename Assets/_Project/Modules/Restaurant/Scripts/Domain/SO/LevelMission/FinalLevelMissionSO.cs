@@ -22,12 +22,33 @@ namespace LabDiner.Restaurant.SO
         [Header("Target")]
         public FinalMissionType MissionType;
         [SerializeField] private CoreStationRuntimeSO _coreStationRuntimeSO;
+
+        void OnEnable()
+        {
+            if(_coreStationRuntimeSO != null)
+            {
+                _coreStationRuntimeSO.OnValueChanged += HandleCoreStationLevelChanged;
+            }
+        }
+
+        void OnDisable()
+        {
+            if(_coreStationRuntimeSO != null)
+            {
+                _coreStationRuntimeSO.OnValueChanged -= HandleCoreStationLevelChanged;
+            }
+        }
+
         public override float GetCurrentValue()
         {
             switch (MissionType)
             {
                 case FinalMissionType.AllCoreStationLevel:
                     List<CoreStation> coreStations = _coreStationRuntimeSO.CoreStations;
+
+                    Debug.Log("Calculating Final Mission Progress: Total Core Station Levels / Max Possible Levels");
+                    Debug.Log($"Total Core Station Levels: {coreStations.Sum(s => s.CurrentLevel)}");
+                    Debug.Log($"Max Possible Levels: {coreStations.Sum(s => s.CoreStationSO.LevelPerStar * s.CoreStationSO.StationStars.Count)}");
 
                     int totalCoreStationCurrentLevel = coreStations.Sum(s => s.CurrentLevel);
                     int totalCoreStationMaxLevel = coreStations.Sum(s => s.CoreStationSO.LevelPerStar * s.CoreStationSO.StationStars.Count);
@@ -43,6 +64,14 @@ namespace LabDiner.Restaurant.SO
         protected virtual void Reset()
         {
             TargetValue = 1;
+        }
+
+        private void HandleCoreStationLevelChanged()
+        {
+            if(MissionType == FinalMissionType.AllCoreStationLevel)
+            {
+                OnValueChanged?.Invoke();
+            }
         }
     }
 }

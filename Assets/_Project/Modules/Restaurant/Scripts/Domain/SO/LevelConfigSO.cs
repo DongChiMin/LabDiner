@@ -22,9 +22,6 @@ namespace LabDiner.Restaurant.SO
         public List<Staff> InitialStaffs;
         public double InitialMoney = 10;
         public int InitialGuestQuantity = 2;
-        
-        [Header("Core Station Settings")]
-        public List<CoreStationSO> CoreStations;   // Danh sách các trạm chính có trong level, dùng để tính toán tiến độ level dựa trên level max của các trạm chính này
 
         [Header("Guest Order Settings")]
         public int MaxUniqueStations;           // Số lượng trạm chính khác nhau tối đa có trong đơn hàng của khách (ví dụ: 2 thì khách chỉ gọi món từ 2 trạm chính khác nhau, dù có thể gọi nhiều món từ mỗi trạm)
