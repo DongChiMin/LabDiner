@@ -58,7 +58,7 @@ namespace LabDiner.Restaurant.Runtime
             {
                 DiningSeat selectedSeat = availableSeats[Random.Range(0, availableSeats.Count)];
                 _diningSeatRuntimeSet.SetOccupy(selectedSeat, guest);
-                guest.Setup(order, selectedSeat.transform.position, exitPos, selectedSeat);
+                guest.Setup(order, selectedSeat.SitPos.position, exitPos, selectedSeat);
                 return;
             }
 

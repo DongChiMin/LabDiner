@@ -11,16 +11,18 @@ namespace LabDiner.Restaurant.Environment
     {
         public bool IsOccupied => _occupiedGuest != null;
         public Transform WorkPos => _workPos;
+        public Transform SitPos => _sitPos;
 
         [Header("Settings")]
         [SerializeField] private Transform _workPos;
+        [SerializeField] private Transform _sitPos;
 
         [Header("[Runtime]")]
         [SerializeField] private GuestContext _occupiedGuest;
 
         [Header("Gizmos Settings")]
-        [SerializeField] private float _workCenterY = 0f;
         [SerializeField] private Vector3 _workPosSize = new Vector3(1.5f, 2.25f, 0.1f);
+        [SerializeField] private Vector3 _sitPosSize = new Vector3(1.5f, 2.25f, 0.1f);
 
         public void Occupy(GuestContext guest)
         {
@@ -30,14 +32,16 @@ namespace LabDiner.Restaurant.Environment
         #if UNITY_EDITOR
         void OnDrawGizmos()
         {
-                // 1. Vẽ vị trí ghế (Seat Position)
+                // 1. Vẽ vị trí ghế (Seat Position) - Dạng hình chữ nhật
                 Gizmos.color = IsOccupied ? Color.red : Color.green;
-                Gizmos.DrawWireSphere(transform.position, 0.2f);
+                Vector3 seatCenter = _sitPos.transform.position + _sitPosSize.y * 0.5f * Vector3.up; // Center của ghế được offset lên một nửa chiều cao
+                Vector3 seatSize = _sitPosSize;
+                Gizmos.DrawWireCube(seatCenter, seatSize);
 
                 // 2. Vẽ vị trí làm việc (Work Position) - Hình vuông "cao cao" như bạn muốn
                 Gizmos.color = Color.yellow;
                 Vector3 workPos = WorkPos.position;
-                Vector3 center = workPos + Vector3.up * _workCenterY;
+                Vector3 center = new Vector3(workPos.x, workPos.y + _workPosSize.y * 0.5f, workPos.z);
                 Gizmos.DrawWireCube(center, _workPosSize);
 
                 // 3. Vẽ đường nối giữa Ghế và WorkPos để dễ phân biệt

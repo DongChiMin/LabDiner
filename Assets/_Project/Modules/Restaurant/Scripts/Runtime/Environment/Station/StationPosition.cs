@@ -10,7 +10,6 @@ namespace LabDiner.Restaurant.Environment
 
         [Header("Gizmos")]
         [SerializeField] private Vector3 _spawnGizmoSize = Vector3.one * 1.5f;
-        [SerializeField] private float _workGizmoCenterY = 0f;
         [SerializeField] private Vector3 _workGizmoSize = new Vector3(1.5f, 1.2f, 0.1f);
 
         void OnDrawGizmos()
@@ -25,7 +24,7 @@ namespace LabDiner.Restaurant.Environment
 
             Gizmos.color = Color.yellow;
             Vector3 pos = workPos.position;
-            Vector3 center = pos + Vector3.up * _workGizmoCenterY;
+            Vector3 center = pos + Vector3.up * _workGizmoSize.y * 0.5f;
             Gizmos.DrawWireCube(center, _workGizmoSize);
         }
 

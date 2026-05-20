@@ -67,6 +67,8 @@ namespace LabDiner.Restaurant.UI
 
         public void Show()
         {
+            if(gameObject.activeSelf) return;
+
             gameObject.SetActive(true);
             _popScaleEffect.Show();
         }
