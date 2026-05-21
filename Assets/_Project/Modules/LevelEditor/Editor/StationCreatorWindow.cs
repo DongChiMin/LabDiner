@@ -45,6 +45,9 @@ public class StationCreatorWindow : EditorWindow
         dishName = EditorGUILayout.TextField("Dish Name", dishName);
         dishIcon = (Sprite)EditorGUILayout.ObjectField("Dish Icon (UI)", dishIcon, typeof(Sprite), false);
         stationIcon = (Sprite)EditorGUILayout.ObjectField("Station Icon (World)", stationIcon, typeof(Sprite), false);
+        // Derive station file name automatically from dish name (e.g. "Apple" -> "Dish_Apple")
+        stationFileName = $"Dish_{dishName.Replace(" ", "")}";
+        EditorGUILayout.LabelField("Station File Name", stationFileName);
         EditorGUILayout.EndVertical();
 
         EditorGUILayout.Space(10);
@@ -52,7 +55,6 @@ public class StationCreatorWindow : EditorWindow
         // --- PHẦN 2: CORE STATION BALANCING ---
         DrawHeader("2. STATION BALANCING (STATS)");
         EditorGUILayout.BeginVertical("box");
-        stationFileName = EditorGUILayout.TextField("Asset Name", stationFileName);
         levelPerStar = EditorGUILayout.IntField("Levels Per Star", levelPerStar);
         baseProcessTime = EditorGUILayout.FloatField("Base Process Time (s)", baseProcessTime);
         
