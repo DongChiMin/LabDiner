@@ -38,13 +38,9 @@ namespace LabDiner.Restaurant.Humanoid
         private GuestContext _ctx;
         private ServingTask _servingTask;
 
-        void Awake()
-        {
-            _servingTask = new ServingTask(null, null);
-        }
-
         void OnEnable()
         {
+            _servingTask = new ServingTask(null, null);
             _isServed = false;
             _isFoodReceivedEnough = false;
             _order = null;
