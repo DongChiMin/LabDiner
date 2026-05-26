@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: f9b476ed6896fc34496c6b6cd4a32757
+guid: c79e1e14d34769d42a87e2d2668d9546
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3246793097361146182
-    second: apple_juice_0
+      213: 2641698482785147981
+    second: Group 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: apple_juice_0
+      name: Group 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 47
-        height: 77
+        width: 73
+        height: 70
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 641c66bae1dee0d20800000000000000
-      internalID: 3246793097361146182
+      spriteID: d4cd81616c239a420800000000000000
+      internalID: 2641698482785147981
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      apple_juice_0: 3246793097361146182
+      Group 1_0: 2641698482785147981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
