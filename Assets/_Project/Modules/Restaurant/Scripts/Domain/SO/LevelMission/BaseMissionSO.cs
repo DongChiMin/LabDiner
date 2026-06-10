@@ -16,6 +16,7 @@ namespace LabDiner.Restaurant.SO
 
     public abstract class BaseMissionSO : ScriptableObject
     {
+        public string Id => name; // Mặc định ID của mission sẽ là tên của ScriptableObject, đảm bảo tính duy nhất
         public Action OnValueChanged;
 
         [Header("Mission Info")]

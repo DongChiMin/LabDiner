@@ -16,6 +16,7 @@ namespace LabDiner.Restaurant.SO
 
     public abstract class BaseUpgradeSO : ScriptableObject
     {
+        public string Id => name; // Mặc định ID của upgrade sẽ là tên của ScriptableObject, đảm bảo tính duy nhất
         [Header("Upgrade Info")]
         public string Title;
         [TextArea] public string Description;
