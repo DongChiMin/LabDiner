@@ -167,9 +167,9 @@ namespace LabDiner.Restaurant.Editor
             try 
             {
                 // Thay thế đúng đường dẫn namespace class của bạn tại đây nếu bị báo đỏ lỗi biên dịch
-                PlayerSave progress = PlayerSaveFile.LoadProgress();
-                progress.currentLevelIndex = levelIndex;
-                PlayerSaveFile.SaveProgress(progress);
+                PlayerSave progress = PlayerSaveFile.LoadFromFile();
+                progress.SetCurrentLevelIndex(levelIndex);
+                PlayerSaveFile.SaveToFile(progress);
                 Debug.Log($"<color=cyan>[Playtest]</color> Đã nạp thành công dữ liệu Level Index [<b>{levelIndex}</b>] vào hệ thống lưu trữ!");
             }
             catch (System.Exception e)
@@ -366,13 +366,14 @@ namespace LabDiner.Restaurant.Editor
         {
             try
             {
-                // Cách 1: Khởi tạo một save mới tinh và ghi đè lên file cũ
-                PlayerSave emptySave = new PlayerSave();
-                
-                // Bạn có thể set mặc định nếu cần (Ví dụ: level đầu tiên = 1)
-                emptySave.currentLevelIndex = 1; 
-                
-                PlayerSaveFile.SaveProgress(emptySave);
+                // 1. Reset file Save của Player về mặc định (Level 1)
+                PlayerSave emptyPlayerSave = new PlayerSave();
+                emptyPlayerSave.SetCurrentLevelIndex(1);
+                PlayerSaveFile.SaveToFile(emptyPlayerSave);
+
+                // 2. Reset file Save Tiến trình Level (level_progress.dat) về mặc định tinh khôi
+                LevelProgressSave emptyLevelSave = new LevelProgressSave();
+                LevelProgressSaveFile.SaveToFile(emptyLevelSave);
             }
             catch (System.Exception e)
             {

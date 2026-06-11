@@ -5,12 +5,13 @@ using LabDiner.Restaurant.Event;
 using LabDiner.Restaurant.Interface;
 using LabDiner.Restaurant.Manager;
 using LabDiner.Restaurant.SO;
+using LabDiner.Shared;
 using LabDiner.Shared.UI;
 using UnityEngine;
 
 namespace LabDiner.Restaurant.UI
 {
-    public partial class LevelMissionController : MonoBehaviour, ILevelInitializable
+    public partial class LevelMissionController : MonoBehaviour, ILevelInitializable, ILevelProgress
     {
         [Header("Events")]
         [SerializeField] private IntEvent _onLevelComplete;
@@ -20,6 +21,7 @@ namespace LabDiner.Restaurant.UI
         [SerializeField] private LevelMissionHUD _missionHUD;
         [SerializeField] private ToggleAttentionEffect _attentionEffect;
         [SerializeField] private Transform _rewardStartPos;
+        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
 
         [Header("[Runtime]")]
         [SerializeField] private List<BaseMissionSO> _remainingMissions = new List<BaseMissionSO>();
@@ -33,6 +35,7 @@ namespace LabDiner.Restaurant.UI
             _onLevelInit.Register(Init);
             _missionHUD.OnRewardClaimed += HandleRewardClaim;
             if(_currentMission != null) _currentMission.OnValueChanged += HandleProgressUpdate;
+            _progressRuntimeSO.OnProgressInject += LoadProgress;
         }
 
         void OnDisable()
@@ -40,6 +43,7 @@ namespace LabDiner.Restaurant.UI
             _onLevelInit.Unregister(Init);
             _missionHUD.OnRewardClaimed -= HandleRewardClaim;
             if(_currentMission != null) _currentMission.OnValueChanged -= HandleProgressUpdate;
+            _progressRuntimeSO.OnProgressInject -= LoadProgress;
         }
 
         public void Init(LevelConfigSO config)
@@ -107,6 +111,8 @@ namespace LabDiner.Restaurant.UI
         {
             if (_currentMission == null) return;
             
+            UpdateProgress();
+
             if (_isFinalMission)
             {
                 CompleteLevel();
@@ -133,6 +139,23 @@ namespace LabDiner.Restaurant.UI
 
             _onLevelComplete.Raise(_currentLevel);
             _missionHUD.gameObject.SetActive(false);
+        }
+
+        public void LoadProgress()
+        {
+            LevelProgressSave progress = _progressRuntimeSO.LevelProgressSave;
+            List<LevelMissionProgress> missionProgresses = progress.levelMissionProgresses;
+            if (missionProgresses == null || missionProgresses.Count == 0) return;
+
+            while (_currentMission != null && missionProgresses.Any(m => m.MissionID == _currentMission.Id && m.isCollected))
+            {
+                ActivateNextMission();
+            }
+        }
+
+        public void UpdateProgress()
+        {
+            _progressRuntimeSO.LevelProgressSave.UpdateLevelMission(_currentMission.Id, true);
         }
         #endregion
 

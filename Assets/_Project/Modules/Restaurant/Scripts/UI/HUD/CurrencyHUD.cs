@@ -9,10 +9,11 @@ using LabDiner.Shared.SO;
 using LabDiner.Restaurant.Interface;
 using LabDiner.Restaurant.SO;
 using LabDiner.Restaurant.Event;
+using LabDiner.Shared;
 
 namespace LabDiner.Restaurant.UI
 {
-    public class CurrencyHUD : MonoBehaviour, ILevelInitializable
+    public class CurrencyHUD : MonoBehaviour, ILevelInitializable, ILevelProgress
     {
         [SerializeField] private TextMeshProUGUI _coinText;
         [SerializeField] private TextMeshProUGUI _gemText;
@@ -24,22 +25,28 @@ namespace LabDiner.Restaurant.UI
         [SerializeField] private LevelCoinFlyEvent _onCoinFlyAdded;
         [SerializeField] private LevelGemFlyEvent _onGemFlyAdded;
 
+        [Header("Progress")]
+        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
+
         void OnEnable()
         {
             _onLevelInit.Register(Init);
 
-            _coinRuntimeData.OnValueChanged += UpdateCoinUI;
+            _coinRuntimeData.OnValueChanged += UpdateCoin;
             _onCoinFlyAdded.Register(HandleCoinFlyAdded);
 
             _gemRuntimeData.OnValueChanged += UpdateGemUI;
             _onGemFlyAdded.Register(HandleGemFlyAdded);
+
+            //Progress
+            _progressRuntimeSO.OnProgressInject += LoadProgress;
         }
 
         void OnDisable()
         {
             _onLevelInit.Unregister(Init);
 
-            _coinRuntimeData.OnValueChanged -= UpdateCoinUI;
+            _coinRuntimeData.OnValueChanged -= UpdateCoin;
             _onCoinFlyAdded.Unregister(HandleCoinFlyAdded);
 
             _gemRuntimeData.OnValueChanged -= UpdateGemUI;
@@ -47,6 +54,9 @@ namespace LabDiner.Restaurant.UI
             
             // Dừng các hiệu ứng scale nếu đang chạy
             _gemText.transform.parent.DOKill();
+
+            //Progress
+            _progressRuntimeSO.OnProgressInject -= LoadProgress;
         }
 
         public void Init(LevelConfigSO levelConfigSO)
@@ -54,6 +64,12 @@ namespace LabDiner.Restaurant.UI
             _coinRuntimeData.SetValue(levelConfigSO.InitialMoney);
             _coinRuntimeData.Add(0); // Kích hoạt callback để cập nhật UI
             _gemRuntimeData.Add(0);
+        }
+
+        private void UpdateCoin(double newCoinAmount)
+        {
+            UpdateCoinUI(newCoinAmount);
+            UpdateProgress();
         }
 
         private void UpdateCoinUI(double newCoinAmount)
@@ -112,6 +128,17 @@ namespace LabDiner.Restaurant.UI
                 _gemText.transform.parent.DOKill(true);
                 _gemText.transform.parent.DOPunchScale(Vector3.one * 0.1f, 0.1f);
             });
+        }
+    
+        public void LoadProgress()
+        {
+            double levelCoin = _progressRuntimeSO.LevelProgressSave.levelCoin;
+            _coinRuntimeData.SetValue(levelCoin);
+        }
+
+        public void UpdateProgress()
+        {
+            _progressRuntimeSO.LevelProgressSave.UpdateLevelCoin(_coinRuntimeData.Value);
         }
     }
 }

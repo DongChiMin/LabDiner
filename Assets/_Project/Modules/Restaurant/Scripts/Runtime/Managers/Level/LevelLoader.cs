@@ -10,8 +10,6 @@ namespace LabDiner.Restaurant.Managers
 {
     public class LevelLoader : MonoBehaviour
     {
-        private const string PROGRESS_FILE_NAME = PlayerSaveFile.PROGRESS_FILE_NAME;
-
         [SerializeField] private LevelConfigEvent _onLevelInit;
         [SerializeField] private LevelConfigEvent _onLevelIntroStart;
 
@@ -20,6 +18,9 @@ namespace LabDiner.Restaurant.Managers
 
         [Header("Level Init")]
         [SerializeField] private List<Transform> _initRoots;
+
+        [Header("Level Progress")]
+        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
 
 
         void OnEnable()
@@ -34,11 +35,7 @@ namespace LabDiner.Restaurant.Managers
 
         private void SaveLevel(int levelCompleted)
         {
-            JSONExecutor.WriteToFile(new PlayerSave
-            {
-                currentLevelIndex = levelCompleted + 1,
-                hasSeenIntro = false
-            }.ToJson(), PROGRESS_FILE_NAME, true);
+            _progressRuntimeSO.PlayerSave.SetCurrentLevelIndex(levelCompleted + 1); 
         }
 
         public void LoadLevel(LevelConfigSO configSO)
@@ -84,19 +81,28 @@ namespace LabDiner.Restaurant.Managers
 
         private void ExecutePhase3_RestoreProgress(LevelConfigSO configSO)
         {
-            PlayerSave progress = PlayerSaveFile.LoadProgress();
-            bool hasSeenIntro = progress.hasSeenIntro;
+            _progressRuntimeSO.Init();
+            LevelProgressSave progress = _progressRuntimeSO.LevelProgressSave;
 
-            if(!hasSeenIntro)
+            //Nếu chưa xem intro == bắt đầu chơi mới level này
+            //- Đưa danh sách nhiệm vụ và upgrade vào progress để sau này lưu lại
+            //- Set lại cờ đã xem intro = true
+            //- Raise sự kiện bắt đầu intro
+            if (!progress.hasSeenIntro)
             {
+                _progressRuntimeSO.InitializeProgress(configSO);
+                _progressRuntimeSO.LevelProgressSave.UpdateHasSeenIntro(true);
                 _onLevelIntroStart.Raise(configSO);
-                progress.hasSeenIntro = true;
-                PlayerSaveFile.SaveProgress(progress);
             }
+
+            //Nếu đã xem intro rồi
+            //- Raise event để các thành phần trong game tự lấy tiến độ chơi và cập nhật
             else
             {
-                Debug.Log("Đã xem intro, bỏ qua intro...");
+                _progressRuntimeSO.OnProgressInject?.Invoke();
             }
         }
+
+        
     }
 }

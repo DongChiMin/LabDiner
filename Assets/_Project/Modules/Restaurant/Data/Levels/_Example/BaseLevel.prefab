@@ -1167,6 +1167,7 @@ MonoBehaviour:
   - {fileID: 3201200233848494847}
   - {fileID: 625974907087823033}
   - {fileID: 54749128959374267}
+  _progressRuntimeSO: {fileID: 11400000, guid: f9113ef675523464f98c06acecccb4f8, type: 2}
 --- !u!1 &8376465856801078008
 GameObject:
   m_ObjectHideFlags: 0

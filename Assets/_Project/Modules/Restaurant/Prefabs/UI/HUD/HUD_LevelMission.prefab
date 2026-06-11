@@ -378,6 +378,7 @@ MonoBehaviour:
   _missionHUD: {fileID: 371835419344209168}
   _attentionEffect: {fileID: 398316416054161346}
   _rewardStartPos: {fileID: 1339085890939157697}
+  _progressRuntimeSO: {fileID: 11400000, guid: f9113ef675523464f98c06acecccb4f8, type: 2}
   _remainingMissions: []
   _currentMission: {fileID: 0}
   _coreStationRuntime: {fileID: 11400000, guid: 014d0306fd640c34d825b497c1c9b9f8, type: 2}

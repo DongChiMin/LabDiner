@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using LabDiner.Restaurant.Event;
 using LabDiner.Restaurant.Interface;
 using LabDiner.Restaurant.Manager;
 using LabDiner.Restaurant.SO;
+using LabDiner.Shared;
 using LabDiner.Shared.Event;
 using LabDiner.Shared.SO;
 using UnityEngine;
@@ -11,9 +13,10 @@ using UnityEngine.UI;
 
 namespace LabDiner.Restaurant.UI
 {
-    public class LevelUpgradeController : MonoBehaviour, ILevelInitializable
+    public class LevelUpgradeController : MonoBehaviour, ILevelInitializable, ILevelProgress
     {
         [Header("Data")]
+        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
         [SerializeField] private DoubleRuntimeSO _coinData;
         [SerializeField] private LevelUpgradeRuntimeSO _levelUpgradeRuntimeSO;
 
@@ -35,6 +38,7 @@ namespace LabDiner.Restaurant.UI
             _onLevelInit.Register(Init);
             _onPopupShow.Register(HandlePopupShow);
             _coinData.OnValueChanged += HandleCoinUpdated;
+            _progressRuntimeSO.OnProgressInject += LoadProgress;
         }
 
         void OnDisable()
@@ -43,6 +47,7 @@ namespace LabDiner.Restaurant.UI
             _onLevelInit.Unregister(Init);
             _onPopupShow.Unregister(HandlePopupShow);
             _coinData.OnValueChanged -= HandleCoinUpdated;
+            _progressRuntimeSO.OnProgressInject -= LoadProgress;
         }
 
         #region API
@@ -50,6 +55,7 @@ namespace LabDiner.Restaurant.UI
         public void Init(LevelConfigSO levelConfigSO)
         {
             _levelUpgradeRuntimeSO.Clear();
+            upgradeItems.Clear();
             List<BaseUpgradeSO> baseUpgradeSOs = levelConfigSO.AvailableUpgrades;
             double levelCoin = _coinData.Value;
 
@@ -66,12 +72,9 @@ namespace LabDiner.Restaurant.UI
                 item.Init(data);
 
                 Button upgradeButton = item.UpgradeButton;
-                upgradeButton.onClick.AddListener(() => 
+                upgradeButton.onClick.AddListener(() =>
                 {
-                    _coinData.Add(-data.UpgradeCost);
-                    data.ApplyUpgrade();
-                    item.gameObject.SetActive(false);
-                    _levelUpgradeRuntimeSO.Complete(data);
+                    ApplyUpgrade(item, true);
                 });
 
                 upgradeItems.Add(item);
@@ -108,5 +111,39 @@ namespace LabDiner.Restaurant.UI
             _onLevelUpgradable.Raise(canUpgrade);
         }
 
+        private void ApplyUpgrade(LevelUpgradeItem item, bool isUseCoin)
+        {
+            BaseUpgradeSO data = item.UpgradeSO;
+            if(isUseCoin) _coinData.Add(-data.UpgradeCost);
+            data.ApplyUpgrade();
+            item.gameObject.SetActive(false);
+            _levelUpgradeRuntimeSO.Complete(data);
+
+            currentUpgradeData = data;
+            UpdateProgress();
+        }
+
+        private BaseUpgradeSO currentUpgradeData;
+
+        public void LoadProgress()
+        {
+                LevelProgressSave progress = _progressRuntimeSO.LevelProgressSave;
+                List<LevelUpgradeProgress> upgradeProgresses = progress.levelUpgradeProgresses;
+            if (upgradeProgresses == null || upgradeProgresses.Count == 0) return;
+
+            foreach (var item in upgradeItems)
+            {
+                string itemID = item.UpgradeSO.Id;
+                if (upgradeProgresses.Any(u => u.UpgradeID == itemID && u.isPurchased))
+                {
+                    ApplyUpgrade(item, false);
+                }
+            }
+        }
+
+        public void UpdateProgress()
+        {
+            _progressRuntimeSO.LevelProgressSave.UpdateLevelUpgrade(currentUpgradeData.Id, true);
+        }
     }
 }
