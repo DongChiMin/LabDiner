@@ -12,7 +12,7 @@ using UnityEngine;
 namespace LabDiner.Restaurant.SO
 {
     [CreateAssetMenu(fileName = "ProgressRuntimeSet", menuName = "SO/Runtime/Progress")]
-    public class ProgressRuntimeSO : ScriptableObject
+    public class ProgressSaveRuntimeSO : ScriptableObject
     {
         //Được gọi khi có dữ liệu progress được load
         public Action OnProgressInject;

@@ -24,7 +24,7 @@ namespace LabDiner.Restaurant.Managers
         [SerializeField] private List<Transform> _initRoots;
 
         [Header("Level Progress")]
-        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
+        [SerializeField] private ProgressSaveRuntimeSO _progressRuntimeSO;
 
 
         void OnEnable()

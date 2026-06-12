@@ -26,8 +26,8 @@ namespace LabDiner.Restaurant.UI
         [SerializeField] private LevelGemFlyEvent _onGemFlyAdded;
 
         [Header("Progress")]
-        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
-
+        [SerializeField] private ProgressSaveRuntimeSO _progressRuntimeSO;
+ 
         void OnEnable()
         {
             _onLevelInit.Register(Init);

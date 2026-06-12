@@ -21,7 +21,7 @@ namespace LabDiner.Restaurant.UI
         [SerializeField] private LevelMissionHUD _missionHUD;
         [SerializeField] private ToggleAttentionEffect _attentionEffect;
         [SerializeField] private Transform _rewardStartPos;
-        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
+        [SerializeField] private ProgressSaveRuntimeSO _progressRuntimeSO;
 
         [Header("[Runtime]")]
         [SerializeField] private List<BaseMissionSO> _remainingMissions = new List<BaseMissionSO>();

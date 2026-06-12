@@ -16,7 +16,7 @@ namespace LabDiner.Restaurant.UI
     public class LevelUpgradeController : MonoBehaviour, ILevelInitializable, ILevelProgress
     {
         [Header("Data")]
-        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
+        [SerializeField] private ProgressSaveRuntimeSO _progressRuntimeSO;
         [SerializeField] private DoubleRuntimeSO _coinData;
         [SerializeField] private LevelUpgradeRuntimeSO _levelUpgradeRuntimeSO;
 

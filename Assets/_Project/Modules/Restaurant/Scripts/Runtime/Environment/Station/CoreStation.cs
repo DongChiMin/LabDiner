@@ -42,7 +42,7 @@ namespace LabDiner.Restaurant.Environment
         [SerializeField] private CoreStationSO _coreStationSO;
         [SerializeField] private DoubleRuntimeSO _coinRuntimeData;
         [SerializeField] private CoreStationRuntimeSO _coreStationRuntimeSO;
-        [SerializeField] private ProgressRuntimeSO _progressRuntimeSO;
+        [SerializeField] private ProgressSaveRuntimeSO _progressRuntimeSO;
 
         [Header("[DEBUG] Static Attributes")]
         [SerializeField] private string _name = "New CoreStation";
