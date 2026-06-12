@@ -74,7 +74,7 @@ namespace LabDiner.Restaurant.UI
                 Button upgradeButton = item.UpgradeButton;
                 upgradeButton.onClick.AddListener(() =>
                 {
-                    ApplyUpgrade(item, true);
+                    ApplyUpgrade(item, false);
                 });
 
                 upgradeItems.Add(item);
@@ -111,11 +111,11 @@ namespace LabDiner.Restaurant.UI
             _onLevelUpgradable.Raise(canUpgrade);
         }
 
-        private void ApplyUpgrade(LevelUpgradeItem item, bool isUseCoin)
+        private void ApplyUpgrade(LevelUpgradeItem item, bool isFromLoadProgress = false)
         {
             BaseUpgradeSO data = item.UpgradeSO;
-            if(isUseCoin) _coinData.Add(-data.UpgradeCost);
-            data.ApplyUpgrade();
+            if(!isFromLoadProgress) _coinData.Add(-data.UpgradeCost);
+            data.ApplyUpgrade(isFromLoadProgress);
             item.gameObject.SetActive(false);
             _levelUpgradeRuntimeSO.Complete(data);
 
@@ -136,7 +136,7 @@ namespace LabDiner.Restaurant.UI
                 string itemID = item.UpgradeSO.Id;
                 if (upgradeProgresses.Any(u => u.UpgradeID == itemID && u.isPurchased))
                 {
-                    ApplyUpgrade(item, false);
+                    ApplyUpgrade(item, true);
                 }
             }
         }

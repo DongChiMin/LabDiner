@@ -21,8 +21,9 @@ namespace LabDiner.Restaurant.SO
         [Header("Static")]
         public GuestUpgradeEvent OnUpgradeRaised;
 
-        public override void ApplyUpgrade()
+        public override void ApplyUpgrade(bool isFromLoadProgress = false)
         {
+            IsFromLoadProgress = isFromLoadProgress;
             // Gửi chính Asset này đi qua Event
             if (OnUpgradeRaised != null)
                 OnUpgradeRaised.Raise(this);

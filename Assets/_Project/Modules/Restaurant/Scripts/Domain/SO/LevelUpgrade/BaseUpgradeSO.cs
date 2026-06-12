@@ -28,6 +28,7 @@ namespace LabDiner.Restaurant.SO
         [Tooltip("Giá trị nâng cấp dựa theo Event\n- dishProcessTime: 1 (100%) --> Tăng gấp đôi tốc độ nấu\n- dishProfit: 2 --> tăng gấp đôi profit\n- Quantity: cộng số lượng nhân viên")]
         public float UpgradeValue;
 
-        public abstract void ApplyUpgrade();
+        public bool IsFromLoadProgress = false; 
+        public abstract void ApplyUpgrade(bool isFromLoadProgress = false);
     }
 }

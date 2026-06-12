@@ -61,6 +61,7 @@ namespace LabDiner.Restaurant.Manager
 
         private void UpgradeQUantity(StaffUpgradeSO upgradeSO)
         {
+            bool isFromLoadProgress = upgradeSO.IsFromLoadProgress;
             int quantity = Mathf.RoundToInt(upgradeSO.UpgradeValue);
             StaffType target = upgradeSO.Target;
             List<Staff> staffToSpawn = new List<Staff>();
@@ -91,7 +92,8 @@ namespace LabDiner.Restaurant.Manager
                 }
 
                 //Nếu có nhân viên mới được sinh ra, kiểm tra xem có spawn trong hộp hay không
-                if (_spawnInBox)
+                //Nếu load từ progress thì spawn trực tiếp nhân viên chứ ko spawn hộp
+                if (_spawnInBox && !isFromLoadProgress)
                 {
                     foreach (var staff in staffToSpawn)
                     {
